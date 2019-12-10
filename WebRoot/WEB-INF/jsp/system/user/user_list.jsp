@@ -68,8 +68,6 @@
 						<th>登录名</th>
 						<th>姓名</th>
 						<th>角色</th>
-						<th>公司</th>
-						<th>部门</th>
 						<th><i class="icon-envelope"></i>邮箱</th>
 						<th><i class="icon-time hidden-phone"></i>最近登录</th>
 						<th>上次登录IP</th>
@@ -95,8 +93,6 @@
 								<td><a>${user.USERNAME }</a></td>
 								<td>${user.NAME }</td>
 								<td>${user.ROLE_NAME }</td>
-								<td>${user.gs}</td>
-								<td>${user.bm}</td>
 								<c:if test="${QX.FX_QX == 1 }">
 								<td><a title="发送电子邮件" style="text-decoration:none;cursor:pointer;" onclick="sendEmail('${user.EMAIL }');">${user.EMAIL }&nbsp;<i class="icon-envelope"></i></a></td>
 								</c:if>

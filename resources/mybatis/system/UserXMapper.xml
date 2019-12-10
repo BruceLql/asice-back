@@ -203,13 +203,9 @@
 				u.NUMBER,
 				u.PHONE,
 				r.ROLE_ID,
-				r.ROLE_NAME,
-				g.mrc_name as gs,
-				b.mrc_name as bm
+				r.ROLE_NAME
 		from SYS_USER u
-		left join SYS_ROLE r on u.ROLE_ID = r.ROLE_ID 
-		left join mb_reng_corporatesector g on u.gs_id=g.mrc_uuid and g.mrc_state='enable'
-		left join mb_reng_corporatesector b on u.bm_id=b.mrc_uuid and b.mrc_state='enable'
+		left join SYS_ROLE r on u.ROLE_ID = r.ROLE_ID
 		where 
 		 u.USERNAME != 'admin'
 		and (r.ROLE_ID != '7' and r.PARENT_ID != '7')

@@ -112,8 +112,6 @@ function createTwoD(){
 		dataType:'json',
 		cache: false,
 		success: function(data){
-			debugger;
-			 alert("=======================");
 			 if("success" == data.result){
 				 $("#encoderContent").tips({
 						side:1,
