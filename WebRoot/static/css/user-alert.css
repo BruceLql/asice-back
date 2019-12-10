@@ -1,0 +1,182 @@
+@charset "UTF-8";
+textarea,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+/* 弹出窗抠 */
+.alertwindos-bg {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  background: #000;
+  z-index: 102;
+}
+/* 弹出小窗口 */
+.alertk {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 450px;
+  min-height: 200px;
+  padding: 5px;
+  background-color: #fff;
+  z-index: 103;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%); /* IE 9 */
+  -moz-transform: translate(-50%, -50%); /* Firefox */
+  -webkit-transform: translate(-50%, -50%); /* Safari 和 Chrome */
+  -o-transform: translate(-50%, -50%); /* Opera */
+  /* text-align: center; */
+  border-radius: 4px;
+}
+.alerttk-small-in {
+  display: block;
+  /* margin: 20px auto 20px auto; */
+  color: #333;
+  font-size: 16px;
+  margin-right: 10px;
+}
+.close-open-button {
+  width: 80px;
+  height: 30px;
+  line-height: 30px;
+  display: inline-block;
+  /* margin: 20px 15px 20px 15px; */
+  cursor: pointer;
+  text-align: center;
+  border-radius: 4px;
+  -o-transition: all .3s;
+  transition: all .3s;
+  -webkit-transition: all .3s;
+}
+.bulue {
+  color: #fff;
+  background: #3dacf7;
+}
+.bulue-text:hover{
+    background-color: #1890ff;
+}
+
+.bule-border {
+  border: 1px solid #3dacf7;
+}
+.bulue-text {
+  color: #3dacf7;
+}
+
+/* 成功按钮 */
+.success{
+    background-color: #3dacf7;
+    color: #fff;
+}
+.red-colose{
+    border: 0;
+    color: #fff;
+    background-color: #e57373;
+}
+.red-colose:hover{
+    background-color: #ea5050;
+}
+/* 信息提示 */
+.alert_title{
+    position: relative;
+    height: 40px;
+    line-height: 40px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding: 0 10px;
+    border-bottom: 1px solid #ccc;
+    color: #6b7182;
+    font-size: 14px;
+}
+.iconfont{
+    -o-transition: all .3s;
+    transition: all .3s;
+    -webkit-transition: all .3s;
+    cursor: pointer;
+}
+/* 内容区域 */
+.content{min-height: 100px;padding: 0 15px;padding-top: 15px;}
+.item{display: -webkit-box;display: -ms-flexbox;display: flex;
+    display: -webkit-flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    min-height: 30px;
+}
+.liebiao{
+    padding: 5px;
+    color: #6b7182;
+    border-radius: 4px;
+    outline: 0;
+    border-color: #ccc;
+}
+.inputliebiao{
+    border: 1px solid #ccc;
+}
+.footer{
+    margin: 15px 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    display:-webkit-flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+}
+input[type="text"],
+input[type="password"]{
+    outline: 0;
+    border: 1px solid #ccc;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    border-radius: 3px;
+}
+input[type="text"]:focus,
+input[type="password"]:focus{
+    border-color: #3dacf7;
+}
+.iconfont:hover {
+    color: #333;
+    cursor: pointer;
+  }
+  /* 图标定位 */
+  .logo_dingwei {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+  
+
+  .success_text{
+    font-size: 24px;
+    margin-top: 20px;
+    color: #3dacf7;
+    display: none;
+  }
+  .success_fail{
+    font-size: 24px;
+    margin-top: 20px;
+    color: #e57373;
+    display: none;
+  }

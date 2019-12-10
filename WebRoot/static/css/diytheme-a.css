@@ -1,0 +1,447 @@
+﻿/* A基于C的的修改 请放在最后 */
+
+/* 头部head.jsp */
+/* 渐变导航栏 */
+
+/* 输入姓名框 */
+a{cursor: pointer;}
+#nav-search-input {
+  width: auto;
+}
+
+#menu-toggler{
+  background: url("../images/caidna.png") no-repeat;
+  background-size: 25px;
+  background-position-x: 10px;
+  background-position-y: 4px;
+}
+/* 菜单栏 */
+/*@media only screen and (max-width: 979px) {*/
+/*  #menu-toggler > span {*/
+/*    bottom: 0;*/
+/*    border: 0;*/
+/*  }*/
+/*  #menu-toggler > span:after {*/
+/*    content: none;*/
+/*  }*/
+/*  #menu-toggler {*/
+/*    background-color: transparent;*/
+/*    top: -40px;*/
+/*    left: 15px;*/
+/*  }*/
+/*  #menu-toggler:before {*/
+/*    height: 4px;*/
+/*    top: 8px;*/
+/*    border-width: 2px;*/
+/*    border-top: 1px solid #fff;*/
+/*    border-bottom: 1px solid #fff;*/
+/*  }*/
+/*  #menu-toggler:after {*/
+/*    height: 4px;*/
+/*    top: 20px;*/
+/*    border-width: 2px;*/
+/*    border-top: 1px solid #fff;*/
+/*    border-bottom: 1px solid #fff;*/
+/*  }*/
+/*  #sidebar.display,*/
+/*  #sidebar.menu-min.display {*/
+/*    top: -40px;*/
+/*  }*/
+/*}*/
+
+/* 头部导航栏 青亭科技和导航菜单距离 */
+/* @media (max-width: 979px) and (min-width: 400px) {
+  .navbar .brand {
+    margin-left: 41px;
+  }
+} */
+@media (max-width: 320px) {
+  #menu-toggler {
+    top: -48px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  #nav-search-icon {
+    border: 0px solid;
+    border-radius: 0px;
+    background-color: transparent;
+    padding: 0px;
+  }
+  #nav-search-input {
+    opacity: 1;
+    max-width: 100%;
+  }
+}
+
+/* left.jsp 左侧菜单栏部分 */
+
+/* 每个li的边框设为0 */
+
+.nav-list > li {
+  border: 0;
+}
+
+/* 菜单栏每个选项底色 */
+
+.nav-list > li > a {
+  color: #747a7f;
+  background: #e9f6ff;
+  font-size: 14px;
+}
+
+/* 鼠标悬停渐变色 */
+
+.nav-list > li > a:hover {
+  /* background-image: -moz-linear-gradient(top, #098bf5, #0552ae);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#098bf5), to(#0552ae));
+	background-image: -webkit-linear-gradient(top, #098bf5, #0552ae);
+	background-image: -o-linear-gradient(top, #098bf5, #0552ae);
+	background-image: linear-gradient(to bottom, #098bf5, #0552ae); */
+  background: #2286d9 !important;
+}
+.nav-list > li > a:hover {
+  color: #ffffff !important;
+}
+/* 白色箭头 */
+.nav-list > li > a:hover > .arrow {
+  color: #ffffff;
+}
+
+/* 展开菜单父级颜色 */
+.nav-list > li.open > a {
+  background-color: #e9f6ff;
+  color: #747a7f;
+}
+
+/* 子级选项卡选中 */
+.nav-list > li > .submenu > li.active > a {
+  color: #fff;
+  background-color: #2286d9 !important;
+}
+
+/* 菜单三角收缩 */
+
+#sidebar-collapse {
+  border: 0px;
+  background: #e9f6ff;
+}
+
+/* 去掉三角收缩中的横线 */
+
+#sidebar-collapse:before {
+  content: none;
+}
+
+/* 白色菜单底部 */
+
+#sidebar:before {
+  background: #e9f6ff;
+  border: 0px solid #979797;
+}
+
+/* 菜单栏头部两个文件夹底色 */
+
+#sidebar-shortcuts {
+  border: 0;
+  background: #e9f6ff;
+}
+
+/* 表格部分 */
+
+/* 第一行TH */
+
+.table thead:first-child tr {
+  /* background: -moz-linear-gradient(top, #fff 0, #63b2f3 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fff), color-stop(100%, #63b2f3));
+	background: -webkit-linear-gradient(top, #fff 0, #63b2f3 100%);
+	background: -o-linear-gradient(top, #fff 0, #63b2f3 100%);
+	background: -ms-linear-gradient(top, #fff 0, #63b2f3 100%);
+	background: linear-gradient(to bottom, #fff 0, #63b2f3 100%); */
+  background: #e3f1fc;
+}
+
+/* 每两行填充一次 */
+/* odd是偶数 奇数even */
+.table-striped tbody > tr:nth-child(odd) > td,
+.table-striped tbody > tr:nth-child(odd) > th {
+  background-color: #edf7fd;
+  background: #f1f8fd;
+}
+
+/* 鼠标悬停改变每行颜色 */
+.table-hover tbody tr:hover td,
+.table-hover tbody tr:hover td > a,
+.table-hover tbody tr:hover td > div > a {
+  /* background-color: #d5ebf9; */
+  /* background: #2286d9; */
+  color: #fff;
+}
+/* 这才是真正的table每行hover */
+.table-hover tbody tr:hover td,
+.table-hover tbody tr:hover th {
+  background-color: rgba(34, 134, 217, 0.5);
+  color: #fff;
+}
+/* 整体颜色 */
+
+.table-bordered {
+  background-color: #f9fcfe !important;
+}
+
+/* 取消td边框 */
+
+table,
+tbody,
+th,
+td,
+.table-bordered thead:first-child tr th,
+.table-bordered th,
+.table-bordered td {
+  border: 0;
+  font-family: "PingFangSC-Regular";
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+.table-bordered td,
+th {
+  height: 38px;
+}
+
+th {
+  font-family: "PingFangSC-Medium" !important;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.table-bordered {
+  border: 0;
+}
+
+/* 滚动条 */
+/*—滚动条默认显示样式–*/
+::-webkit-scrollbar-thumb {
+  background-color: #018ee8;
+  height: 50px;
+  outline-offset: -2px;
+  outline: 2px solid #fff;
+  -webkit-border-radius: 4px;
+  border: 2px solid #fff;
+}
+
+/*—鼠标点击滚动条显示样式–*/
+::-webkit-scrollbar-thumb:hover {
+  background-color: #fb4446;
+  height: 50px;
+  -webkit-border-radius: 4px;
+}
+
+/*—滚动条大小–*/
+::-webkit-scrollbar {
+  width: 8px;
+  height: 18px;
+}
+
+/*—滚动框背景样式–*/
+::-webkit-scrollbar-track-piece {
+  background-color: #fff;
+  -webkit-border-radius: 0;
+}
+
+/* 筛选部分 */
+@media only screen and (max-width: 767px) {
+  #nav-search-input {
+    width: auto;
+  }
+}
+
+/* 搜索按钮 */
+.btn-light {
+  background-color: #2286d9 !important;
+  border-color: #2286d9;
+}
+.btn-light:hover {
+  background-color: #fff !important;
+  border-color: #2286d9;
+}
+.btn-light:hover #nav-search-icon {
+  color: #2286d9;
+}
+#nav-search-input {
+  color: #2286d9 !important;
+}
+/* 搜索图标 */
+#nav-search {
+  color: #fff;
+}
+button > #nav-search-icon,
+a > #nav-search-icon {
+  color: #fff !important;
+}
+.btn-light:hover > #nav-search-icon,
+.btn-light:hover > #nav-search-icon {
+  color: #2286d9 !important;
+}
+/* 输入框 */
+
+input[type="text"] {
+  color: #333 !important;
+  border-color: #2286d9 !important;
+  font-family: Verdana,Tahoma, Arial;
+  font-size: 14px;
+  border-radius: 3px  !important;
+  margin: 0;
+  width: 120px;
+  margin-right: 3px;
+}
+
+/* 输入框底部 */
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus {
+  box-shadow: none;
+  border-color: #2286d9;
+}
+
+/* 身份证输入框 */
+#idCard {
+  width: 150px;
+  padding-left: 28px;
+}
+
+/* 更改placeholder颜色 */
+input[readonly]::-webkit-input-placeholder {
+  color: #fff;
+}
+input[readonly]::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #fff;
+}
+input[readonly]:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #fff;
+}
+input[readonly]:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #fff;
+}
+/* 选择日期 */
+input[readonly] {
+  color: #ffffff !important;
+  text-align: center;
+  cursor: pointer;
+  background: #2286d9 !important;
+  border: 0;
+}
+input[readonly]:focus {
+  box-shadow: none;
+  border-color: transparent;
+}
+/* 选择日期里面的颜色 */
+.datepicker table tr td.active,
+.datepicker table tr td.active:hover,
+.daterangepicker td.active,
+.daterangepicker td.active:hover {
+  background-color: #2286d9 !important;
+}
+
+/* 类型选择 */
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+select:focus {
+  box-shadow: none;
+  border-color: #2286d9;
+}
+/* 点击-输入姓名输入框1 */
+@media only screen and (max-width: 767px) {
+  #nav-search:hover #nav-search-input,
+  #nav-search-btn:active + #nav-search-input,
+  #nav-search-input:focus,
+  #nav-search-input:hover,
+  #nav-search-input:active {
+    width: auto;
+  }
+}
+
+
+/* table里面的全选按钮 */
+
+input[type="checkbox"] + .lbl::before,
+input[type="radio"] + .lbl::before {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 2px;
+  color: #fff;
+}
+
+/* 按钮底色 */
+
+input[type="checkbox"]:checked + .lbl::before,
+input[type="radio"]:checked + .lbl::before {
+  background: #2286d9;
+  border-radius: 2px;
+  border-color: #2286d9;
+}
+
+/* 鼠标移动到按钮时候 */
+
+input[type="checkbox"]:hover + .lbl::before,
+input[type="radio"]:hover + .lbl::before,
+input[type="checkbox"] + .lbl:hover::before,
+input[type="radio"] + .lbl:hover::before {
+  border-color: #2286d9;
+}
+/* 改变跳转分页颜色 */
+.pagination ul li a.btn-success{background-color:#0274dd!important;}
+
+/* 列表上面的搜索一块 */
+.big-box{padding: 15px 0;margin: 0 10px;}
+.box-in-div{margin-bottom: 10px;display: flex;display: -webkit-flex;}
+.box-in-div button{margin-right: 3px;}
+/* 按钮样式 基本样式 */
+
+.button-style { display: inline-block; vertical-align: middle; outline: 0; border-radius: 3px; background-color: #2286d9; color: #FFF; padding: 5px 8px; cursor: pointer; letter-spacing: 1.5px; }
+.button-style:active { background-color: #0274dd; }
+.button-style:hover { opacity: .8; color: #FFF; text-decoration: none; }
+.button-style:focus{ border: 0; }
+/* 危险按钮 */
+.delte{ background-color: #F56C6C; }
+.delte:active{ background-color: #ff3131; }
+/* 图标 */
+.open{ background-color: rgb(243, 169, 57); }
+.open:active{ background-color: rgb(211, 134, 18); }
+/* 图标 */
+.youjian{ background-color: #15bb7b; }
+.youjian:active{ background-color: #67C23A; }
+.table_logo{padding: 5px; border-radius: 5px;background: linear-gradient(#1890ff,#0274dd);font-size: 16px;}
+
+select{margin: 0;}
+
+
+#page-content{padding: 10px 5px}
+.row-fluid form table:nth-child(1) tr{margin-bottom: 5px;display: table;}
+#page-content .row-fluid .row-fluid form table:nth-child(2) thead{white-space: nowrap;}

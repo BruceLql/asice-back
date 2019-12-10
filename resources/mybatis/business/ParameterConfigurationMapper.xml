@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ParameterConfigurationMapper">
+	
+
+<sql id="selectFiled">
+	NAME,
+	NICK1,
+	KEY1,
+	KEY2,
+	KEY3,
+	KEY4,
+	KEY5,
+	KEY6,
+	NICK2,
+	NICK3,
+	TYPE,
+	TYPE_NAME,
+	BZ,
+	CDATE,
+	UDATE,
+	MSP_001,
+	MSP_002,
+	MSP_003,
+	MSP_004,
+	MSP_005,
+	MSP_006,
+	MSP_007,
+	MSP_008,
+	MSP_009,
+	MSP_010,
+	UUID
+</sql>
+
+<sql id="insertValues">
+	#{NAME},
+	#{NICK1},
+	#{KEY1},
+	#{KEY2},
+	#{KEY3},
+	#{KEY4},
+	#{KEY5},
+	#{KEY6},
+	#{NICK2},
+	#{NICK3},
+	#{TYPE},
+	#{TYPE_NAME},
+	#{BZ},
+	#{CDATE},
+	#{UDATE},
+	#{MSP_001},
+	#{MSP_002},
+	#{MSP_003},
+	#{MSP_004},
+	#{MSP_005},
+	#{MSP_006},
+	#{MSP_007},
+	#{MSP_008},
+	#{MSP_009},
+	#{MSP_010},
+	#{UUID}
+</sql>
+
+<sql id="selectWhereIf">
+	<if test="NAME !=null and NAME !=''">and NAME = #{NAME}</if>
+	<if test="NICK1 !=null and NICK1 !=''">and NICK1 = #{NICK1}</if>
+	<if test="KEY1 !=null and KEY1 !=''">and KEY1 = #{KEY1}</if>
+	<if test="KEY2 !=null and KEY2 !=''">and KEY2 = #{KEY2}</if>
+	<if test="KEY3 !=null and KEY3 !=''">and KEY3 = #{KEY3}</if>
+	<if test="KEY4 !=null and KEY4 !=''">and KEY4 = #{KEY4}</if>
+	<if test="KEY5 !=null and KEY5 !=''">and KEY5 = #{KEY5}</if>
+	<if test="KEY6 !=null and KEY6 !=''">and KEY6 = #{KEY6}</if>
+	<if test="NICK2 !=null and NICK2 !=''">and NICK2 = #{NICK2}</if>
+	<if test="NICK3 !=null and NICK3 !=''">and NICK3 = #{NICK3}</if>
+	<if test="TYPE !=null and TYPE !=''">and TYPE = #{TYPE}</if>
+	<if test="TYPE_NAME !=null and TYPE_NAME !=''">and TYPE_NAME = #{TYPE_NAME}</if>
+	<if test="BZ !=null and BZ !=''">and BZ = #{BZ}</if>
+	<if test="CDATE !=null and CDATE !=''">and CDATE = #{CDATE}</if>
+	<if test="UDATE !=null and UDATE !=''">and UDATE = #{UDATE}</if>
+	<if test="MSP_001 !=null and MSP_001 !=''">and MSP_001 = #{MSP_001}</if>
+	<if test="MSP_002 !=null and MSP_002 !=''">and MSP_002 = #{MSP_002}</if>
+	<if test="MSP_003 !=null and MSP_003 !=''">and MSP_003 = #{MSP_003}</if>
+	<if test="MSP_004 !=null and MSP_004 !=''">and MSP_004 = #{MSP_004}</if>
+	<if test="MSP_005 !=null and MSP_005 !=''">and MSP_005 = #{MSP_005}</if>
+	<if test="MSP_006 !=null and MSP_006 !=''">and MSP_006 = #{MSP_006}</if>
+	<if test="MSP_007 !=null and MSP_007 !=''">and MSP_007 = #{MSP_007}</if>
+	<if test="MSP_008 !=null and MSP_008 !=''">and MSP_008 = #{MSP_008}</if>
+	<if test="MSP_009 !=null and MSP_009 !=''">and MSP_009 = #{MSP_009}</if>
+	<if test="MSP_010 !=null and MSP_010 !=''">and MSP_010 = #{MSP_010}</if>
+	<if test="UUID !=null and UUID !=''">and UUID = #{UUID}</if>
+</sql>
+
+<sql id="selectWhereLike">
+	<if test="NAME !=null and NAME !=''">and NAME like CONCAT('%',#{NAME},'%')</if>
+	<if test="NICK1 !=null and NICK1 !=''">and NICK1 like CONCAT('%',#{NICK1},'%')</if>
+	<if test="KEY1 !=null and KEY1 !=''">and KEY1 like CONCAT('%',#{KEY1},'%')</if>
+	<if test="KEY2 !=null and KEY2 !=''">and KEY2 like CONCAT('%',#{KEY2},'%')</if>
+	<if test="KEY3 !=null and KEY3 !=''">and KEY3 like CONCAT('%',#{KEY3},'%')</if>
+	<if test="KEY4 !=null and KEY4 !=''">and KEY4 like CONCAT('%',#{KEY4},'%')</if>
+	<if test="KEY5 !=null and KEY5 !=''">and KEY5 like CONCAT('%',#{KEY5},'%')</if>
+	<if test="KEY6 !=null and KEY6 !=''">and KEY6 like CONCAT('%',#{KEY6},'%')</if>
+	<if test="NICK2 !=null and NICK2 !=''">and NICK2 like CONCAT('%',#{NICK2},'%')</if>
+	<if test="NICK3 !=null and NICK3 !=''">and NICK3 like CONCAT('%',#{NICK3},'%')</if>
+	<if test="TYPE !=null and TYPE !=''">and TYPE like CONCAT('%',#{TYPE},'%')</if>
+	<if test="TYPE_NAME !=null and TYPE_NAME !=''">and TYPE_NAME like CONCAT('%',#{TYPE_NAME},'%')</if>
+	<if test="BZ !=null and BZ !=''">and BZ like CONCAT('%',#{BZ},'%')</if>
+	<if test="CDATE !=null and CDATE !=''">and CDATE like CONCAT('%',#{CDATE},'%')</if>
+	<if test="UDATE !=null and UDATE !=''">and UDATE like CONCAT('%',#{UDATE},'%')</if>
+	<if test="MSP_001 !=null and MSP_001 !=''">and MSP_001 like CONCAT('%',#{MSP_001},'%')</if>
+	<if test="MSP_002 !=null and MSP_002 !=''">and MSP_002 like CONCAT('%',#{MSP_002},'%')</if>
+	<if test="MSP_003 !=null and MSP_003 !=''">and MSP_003 like CONCAT('%',#{MSP_003},'%')</if>
+	<if test="MSP_004 !=null and MSP_004 !=''">and MSP_004 like CONCAT('%',#{MSP_004},'%')</if>
+	<if test="MSP_005 !=null and MSP_005 !=''">and MSP_005 like CONCAT('%',#{MSP_005},'%')</if>
+	<if test="MSP_006 !=null and MSP_006 !=''">and MSP_006 like CONCAT('%',#{MSP_006},'%')</if>
+	<if test="MSP_007 !=null and MSP_007 !=''">and MSP_007 like CONCAT('%',#{MSP_007},'%')</if>
+	<if test="MSP_008 !=null and MSP_008 !=''">and MSP_008 like CONCAT('%',#{MSP_008},'%')</if>
+	<if test="MSP_009 !=null and MSP_009 !=''">and MSP_009 like CONCAT('%',#{MSP_009},'%')</if>
+	<if test="MSP_010 !=null and MSP_010 !=''">and MSP_010 like CONCAT('%',#{MSP_010},'%')</if>
+</sql>
+
+<sql id="selectWhereIfPage">
+	<if test="pd.NAME !=null and pd.NAME !=''">and NAME = #{pd.NAME}</if>
+	<if test="pd.NICK1 !=null and pd.NICK1 !=''">and NICK1 = #{pd.NICK1}</if>
+	<if test="pd.KEY1 !=null and pd.KEY1 !=''">and KEY1 = #{pd.KEY1}</if>
+	<if test="pd.KEY2 !=null and pd.KEY2 !=''">and KEY2 = #{pd.KEY2}</if>
+	<if test="pd.KEY3 !=null and pd.KEY3 !=''">and KEY3 = #{pd.KEY3}</if>
+	<if test="pd.KEY4 !=null and pd.KEY4 !=''">and KEY4 = #{pd.KEY4}</if>
+	<if test="pd.KEY5 !=null and pd.KEY5 !=''">and KEY5 = #{pd.KEY5}</if>
+	<if test="pd.KEY6 !=null and pd.KEY6 !=''">and KEY6 = #{pd.KEY6}</if>
+	<if test="pd.NICK2 !=null and pd.NICK2 !=''">and NICK2 = #{pd.NICK2}</if>
+	<if test="pd.NICK3 !=null and pd.NICK3 !=''">and NICK3 = #{pd.NICK3}</if>
+	<if test="pd.TYPE !=null and pd.TYPE !=''">and TYPE = #{pd.TYPE}</if>
+	<if test="pd.TYPE_NAME !=null and pd.TYPE_NAME !=''">and TYPE_NAME = #{pd.TYPE_NAME}</if>
+	<if test="pd.BZ !=null and pd.BZ !=''">and BZ = #{pd.BZ}</if>
+	<if test="pd.CDATE !=null and pd.CDATE !=''">and CDATE = #{pd.CDATE}</if>
+	<if test="pd.UDATE !=null and pd.UDATE !=''">and UDATE = #{pd.UDATE}</if>
+	<if test="pd.MSP_001 !=null and pd.MSP_001 !=''">and MSP_001 = #{pd.MSP_001}</if>
+	<if test="pd.MSP_002 !=null and pd.MSP_002 !=''">and MSP_002 = #{pd.MSP_002}</if>
+	<if test="pd.MSP_003 !=null and pd.MSP_003 !=''">and MSP_003 = #{pd.MSP_003}</if>
+	<if test="pd.MSP_004 !=null and pd.MSP_004 !=''">and MSP_004 = #{pd.MSP_004}</if>
+	<if test="pd.MSP_005 !=null and pd.MSP_005 !=''">and MSP_005 = #{pd.MSP_005}</if>
+	<if test="pd.MSP_006 !=null and pd.MSP_006 !=''">and MSP_006 = #{pd.MSP_006}</if>
+	<if test="pd.MSP_007 !=null and pd.MSP_007 !=''">and MSP_007 = #{pd.MSP_007}</if>
+	<if test="pd.MSP_008 !=null and pd.MSP_008 !=''">and MSP_008 = #{pd.MSP_008}</if>
+	<if test="pd.MSP_009 !=null and pd.MSP_009 !=''">and MSP_009 = #{pd.MSP_009}</if>
+	<if test="pd.MSP_010 !=null and pd.MSP_010 !=''">and MSP_010 = #{pd.MSP_010}</if>
+	<if test="pd.UUID !=null and pd.UUID !=''">and UUID = #{pd.UUID}</if>
+</sql>
+
+<sql id="updateSetAll">
+	NAME = #{NAME},
+	NICK1 = #{NICK1},
+	KEY1 = #{KEY1},
+	KEY2 = #{KEY2},
+	KEY3 = #{KEY3},
+	KEY4 = #{KEY4},
+	KEY5 = #{KEY5},
+	KEY6 = #{KEY6},
+	NICK2 = #{NICK2},
+	NICK3 = #{NICK3},
+	TYPE = #{TYPE},
+	TYPE_NAME = #{TYPE_NAME},
+	BZ = #{BZ},
+	CDATE = #{CDATE},
+	UDATE = #{UDATE},
+	MSP_001 = #{MSP_001},
+	MSP_002 = #{MSP_002},
+	MSP_003 = #{MSP_003},
+	MSP_004 = #{MSP_004},
+	MSP_005 = #{MSP_005},
+	MSP_006 = #{MSP_006},
+	MSP_007 = #{MSP_007},
+	MSP_008 = #{MSP_008},
+	MSP_009 = #{MSP_009},
+	MSP_010 = #{MSP_010},
+</sql>
+
+<sql id="updateSetIf">
+	<if test="NAME !=null and NAME !=''">NAME = #{NAME},</if>
+	<if test="NICK1 !=null and NICK1 !=''">NICK1 = #{NICK1},</if>
+	<if test="KEY1 !=null and KEY1 !=''">KEY1 = #{KEY1},</if>
+	<if test="KEY2 !=null and KEY2 !=''">KEY2 = #{KEY2},</if>
+	<if test="KEY3 !=null and KEY3 !=''">KEY3 = #{KEY3},</if>
+	<if test="KEY4 !=null and KEY4 !=''">KEY4 = #{KEY4},</if>
+	<if test="KEY5 !=null and KEY5 !=''">KEY5 = #{KEY5},</if>
+	<if test="KEY6 !=null and KEY6 !=''">KEY6 = #{KEY6},</if>
+	<if test="NICK2 !=null and NICK2 !=''">NICK2 = #{NICK2},</if>
+	<if test="NICK3 !=null and NICK3 !=''">NICK3 = #{NICK3},</if>
+	<if test="TYPE !=null and TYPE !=''">TYPE = #{TYPE},</if>
+	<if test="TYPE_NAME !=null and TYPE_NAME !=''">TYPE_NAME = #{TYPE_NAME},</if>
+	<if test="BZ !=null and BZ !=''">BZ = #{BZ},</if>
+	<if test="CDATE !=null and CDATE !=''">CDATE = #{CDATE},</if>
+	<if test="UDATE !=null and UDATE !=''">UDATE = #{UDATE},</if>
+	<if test="MSP_001 !=null and MSP_001 !=''">MSP_001 = #{MSP_001},</if>
+	<if test="MSP_002 !=null and MSP_002 !=''">MSP_002 = #{MSP_002},</if>
+	<if test="MSP_003 !=null and MSP_003 !=''">MSP_003 = #{MSP_003},</if>
+	<if test="MSP_004 !=null and MSP_004 !=''">MSP_004 = #{MSP_004},</if>
+	<if test="MSP_005 !=null and MSP_005 !=''">MSP_005 = #{MSP_005},</if>
+	<if test="MSP_006 !=null and MSP_006 !=''">MSP_006 = #{MSP_006},</if>
+	<if test="MSP_007 !=null and MSP_007 !=''">MSP_007 = #{MSP_007},</if>
+	<if test="MSP_008 !=null and MSP_008 !=''">MSP_008 = #{MSP_008},</if>
+	<if test="MSP_009 !=null and MSP_009 !=''">MSP_009 = #{MSP_009},</if>
+	<if test="MSP_010 !=null and MSP_010 !=''">MSP_010 = #{MSP_010},</if>
+</sql>
+
+<sql id="updateSetIfNull">
+	<if test="NAME !=null">NAME = #{NAME},</if>
+	<if test="NICK1 !=null">NICK1 = #{NICK1},</if>
+	<if test="KEY1 !=null">KEY1 = #{KEY1},</if>
+	<if test="KEY2 !=null">KEY2 = #{KEY2},</if>
+	<if test="KEY3 !=null">KEY3 = #{KEY3},</if>
+	<if test="KEY4 !=null">KEY4 = #{KEY4},</if>
+	<if test="KEY5 !=null">KEY5 = #{KEY5},</if>
+	<if test="KEY6 !=null">KEY6 = #{KEY6},</if>
+	<if test="NICK2 !=null">NICK2 = #{NICK2},</if>
+	<if test="NICK3 !=null">NICK3 = #{NICK3},</if>
+	<if test="TYPE !=null">TYPE = #{TYPE},</if>
+	<if test="TYPE_NAME !=null">TYPE_NAME = #{TYPE_NAME},</if>
+	<if test="BZ !=null">BZ = #{BZ},</if>
+	<if test="CDATE !=null">CDATE = #{CDATE},</if>
+	<if test="UDATE !=null">UDATE = #{UDATE},</if>
+	<if test="MSP_001 !=null">MSP_001 = #{MSP_001},</if>
+	<if test="MSP_002 !=null">MSP_002 = #{MSP_002},</if>
+	<if test="MSP_003 !=null">MSP_003 = #{MSP_003},</if>
+	<if test="MSP_004 !=null">MSP_004 = #{MSP_004},</if>
+	<if test="MSP_005 !=null">MSP_005 = #{MSP_005},</if>
+	<if test="MSP_006 !=null">MSP_006 = #{MSP_006},</if>
+	<if test="MSP_007 !=null">MSP_007 = #{MSP_007},</if>
+	<if test="MSP_008 !=null">MSP_008 = #{MSP_008},</if>
+	<if test="MSP_009 !=null">MSP_009 = #{MSP_009},</if>
+	<if test="MSP_010 !=null">MSP_010 = #{MSP_010},</if>
+</sql>
+
+<sql id="updateEdit">
+	NAME = #{NAME},
+	KEY1 = #{KEY1},
+	KEY2 = #{KEY2},
+	KEY3 = #{KEY3},
+	KEY4 = #{KEY4},
+	KEY5 = #{KEY5},
+	KEY6 = #{KEY6},
+	TYPE = #{TYPE},
+	TYPE_NAME = #{TYPE_NAME},
+	UDATE = #{UDATE},
+	BZ = #{BZ},
+</sql>	
+	
+<sql id="cmdIf">
+	<if test="cmd !=null">${cmd}</if>
+</sql>
+
+
+	<!-- 新增-->
+	<insert id="save" parameterType="pd">
+		insert into MA_SYS_PARAMETER(<include refid="selectFiled"/>) values (<include refid="insertValues"/>)
+	</insert>
+	
+	<!-- 删除(根据非空(null,empty)属性值)-->
+	<delete id="deleteIf" parameterType="pd">
+		delete from MA_SYS_PARAMETER<where><include refid="selectWhereIf"/></where><include refid="cmdIf"/>
+	</delete>
+
+	<!-- 删除(根据主键)-->
+	<delete id="delete" parameterType="pd">
+		delete from MA_SYS_PARAMETER
+		where 
+			UUID = #{UUID}
+	</delete>	
+	
+	<!-- 修改(根据主键只修改属于前台录入的字段) -->
+	<update id="edit" parameterType="pd">
+		update  MA_SYS_PARAMETER <set><include refid="updateEdit"/></set>
+		where 
+			UUID = #{UUID}
+	</update>
+
+	<!-- 修改(根据主键修改所有字段) -->
+	<update id="updateSetAll" parameterType="pd">
+		update MA_SYS_PARAMETER <set><include refid="updateSetAll"/></set>
+		where 
+			UUID = #{UUID}
+	</update>
+	
+	<!-- 修改(根据主键修改非空(null,empty)字段) -->
+	<update id="updateSetIf" parameterType="pd">
+		update MA_SYS_PARAMETER <set><include refid="updateSetIf"/></set>
+		where 
+			UUID = #{UUID}
+	</update>
+
+	<!-- 修改(根据主键修改非空(null)字段) -->
+	<update id="updateSetIfNull" parameterType="pd">
+		update MA_SYS_PARAMETER <set><include refid="updateSetIfNull"/></set>
+		where 
+			UUID = #{UUID}
+	</update>
+		
+	<!-- 修改(根据自定义条件修改非空(null,empty)字段) -->
+	<update id="updateSetIfByCmd" parameterType="pd">
+		update MA_SYS_PARAMETER <set><include refid="updateSetIf"/></set><include refid="cmdIf"/>
+	</update>
+	
+	<!-- 通过主键id获取单条数据 -->
+	<select id="findById" parameterType="pd" resultType="pd">
+		select<include refid="selectFiled"/>from MA_SYS_PARAMETER
+		where 
+			UUID = #{UUID}
+	</select>
+	
+	<!-- 列表(分页无where条件) -->
+	<select id="datalistPage" parameterType="page" resultType="pd">
+		select<include refid="selectFiled"/>from MA_SYS_PARAMETER
+		<where>
+		<if test="pd.NAME !=null and pd.NAME !=''">and NAME like CONCAT('%',#{pd.NAME},'%')</if>
+		<if test="pd.TYPE !=null and pd.TYPE !=''">and TYPE =#{pd.TYPE}</if>
+		<if test="pd.MSP_002 !=null and pd.MSP_002 !=''">and MSP_002 =#{pd.MSP_002}</if>
+		<if test="pd.MSP_003 !=null and pd.MSP_003 !=''">and MSP_003 =#{pd.MSP_003}</if>
+		<if test="pd.TYPE_NAME !=null and pd.TYPE_NAME !=''">and TYPE_NAME like CONCAT('%',#{pd.TYPE_NAME},'%')</if>
+		<if test="pd.lastLoginStart!=null and pd.lastLoginStart!=''">
+			and UDATE &gt;= #{pd.lastLoginStart} 
+		</if>
+		<if test="pd.lastLoginEnd!=null and pd.lastLoginEnd!=''">
+			and UDATE &lt;= #{pd.lastLoginEnd} 
+		</if>
+		</where>
+	</select>
+	
+	<!-- 列表(分页有where条件有cmd) -->
+	<select id="dataWherelistPage" parameterType="page" resultType="pd">
+		select<include refid="selectFiled"/>from MA_SYS_PARAMETER
+		<where><include refid="selectWhereIfPage"/></where><if test="pd.cmd !=null">${pd.cmd}</if>
+	</select>
+	
+	<!-- 列表(全部) -->
+	<select id="listAll" resultType="pd">
+		select<include refid="selectFiled"/>from MA_SYS_PARAMETER
+	</select>
+	
+	
+	<!-- 列表(查非空(null,empty)属性值) -->
+	<select id="listIf" parameterType="pd" resultType="pd">
+		select<include refid="selectFiled"/>from MA_SYS_PARAMETER
+		<where><include refid="selectWhereIf"/></where><include refid="cmdIf"/>
+	</select>
+
+	<!-- 列表(like查询) -->
+	<select id="listLike" parameterType="pd" resultType="pd">
+		select<include refid="selectFiled"/>from MA_SYS_PARAMETER
+		<where><include refid="selectWhereLike"/></where><include refid="cmdIf"/>
+	</select>	
+	
+	<!-- 列表(查自定义条件) -->
+	<select id="listCmd" parameterType="pd" resultType="pd">
+		select<include refid="selectFiled"/>from MA_SYS_PARAMETER<include refid="cmdIf"/>
+	</select>
+	
+	<!-- 批量删除(根据主键数组) -->
+	<delete id="deleteAll" parameterType="String">
+		delete from MA_SYS_PARAMETER
+		where 
+			UUID in
+		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+            #{item}
+		</foreach>
+	</delete>
+	<!-- ========================================以上系统自动生成================================================================== -->
+	
+	<!-- 获取所有类型名称 -->
+	<select id="getTypeNames" resultType="pd">
+		select TYPE_NAME from MA_SYS_PARAMETER
+		<where>
+			<if test="MSP_002 !=null and MSP_002 !=''">and MSP_002=#{MSP_002}</if>
+			<if test="TYPE_NAME !=null and TYPE_NAME !=''">and TYPE_NAME=#{TYPE_NAME}</if>
+			<if test="TYPE !=null and TYPE !=''">and TYPE=#{TYPE}</if>
+		</where>
+		group by TYPE_NAME  order by TYPE_NAME
+	</select>
+
+</mapper>

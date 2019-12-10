@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CorporatesectorMapper">
+	
+
+<sql id="selectFiled">
+	mrc_name,
+	mrc_code,
+	mrc_pid,
+	mrc_type,
+	mrc_bz,
+	mrc_state,
+	mrc_jb,
+	mrc_cdate,
+	mrc_udate,
+	mrc_order,
+	mrc_001,
+	mrc_002,
+	mrc_003,
+	mrc_004,
+	mrc_005,
+	mrc_006,
+	mrc_007,
+	mrc_008,
+	mrc_009,
+	mrc_010,
+	mrc_011,
+	mrc_012,
+	mrc_013,
+	mrc_014,
+	mrc_015,
+	mrc_016,
+	mrc_017,
+	mrc_018,
+	mrc_019,
+	mrc_020,
+	mrc_gsid,
+	mrc_uuid
+</sql>
+
+<sql id="insertValues">
+	#{mrc_name},
+	#{mrc_code},
+	#{mrc_pid},
+	#{mrc_type},
+	#{mrc_bz},
+	#{mrc_state},
+	#{mrc_jb},
+	#{mrc_cdate},
+	#{mrc_udate},
+	#{mrc_order},
+	#{mrc_001},
+	#{mrc_002},
+	#{mrc_003},
+	#{mrc_004},
+	#{mrc_005},
+	#{mrc_006},
+	#{mrc_007},
+	#{mrc_008},
+	#{mrc_009},
+	#{mrc_010},
+	#{mrc_011},
+	#{mrc_012},
+	#{mrc_013},
+	#{mrc_014},
+	#{mrc_015},
+	#{mrc_016},
+	#{mrc_017},
+	#{mrc_018},
+	#{mrc_019},
+	#{mrc_020},
+	#{mrc_gsid},
+	#{mrc_uuid}
+</sql>
+
+<sql id="selectWhereIf">
+	<if test="mrc_name !=null and mrc_name !=''">and mrc_name = #{mrc_name}</if>
+	<if test="mrc_code !=null and mrc_code !=''">and mrc_code = #{mrc_code}</if>
+	<if test="mrc_pid !=null and mrc_pid !=''">and mrc_pid = #{mrc_pid}</if>
+	<if test="mrc_type !=null and mrc_type !=''">and mrc_type = #{mrc_type}</if>
+	<if test="mrc_bz !=null and mrc_bz !=''">and mrc_bz = #{mrc_bz}</if>
+	<if test="mrc_state !=null and mrc_state !=''">and mrc_state = #{mrc_state}</if>
+	<if test="mrc_jb !=null and mrc_jb !=''">and mrc_jb = #{mrc_jb}</if>
+	<if test="mrc_cdate !=null and mrc_cdate !=''">and mrc_cdate = #{mrc_cdate}</if>
+	<if test="mrc_udate !=null and mrc_udate !=''">and mrc_udate = #{mrc_udate}</if>
+	<if test="mrc_order !=null and mrc_order !=''">and mrc_order = #{mrc_order}</if>
+	<if test="mrc_001 !=null and mrc_001 !=''">and mrc_001 = #{mrc_001}</if>
+	<if test="mrc_002 !=null and mrc_002 !=''">and mrc_002 = #{mrc_002}</if>
+	<if test="mrc_003 !=null and mrc_003 !=''">and mrc_003 = #{mrc_003}</if>
+	<if test="mrc_004 !=null and mrc_004 !=''">and mrc_004 = #{mrc_004}</if>
+	<if test="mrc_005 !=null and mrc_005 !=''">and mrc_005 = #{mrc_005}</if>
+	<if test="mrc_006 !=null and mrc_006 !=''">and mrc_006 = #{mrc_006}</if>
+	<if test="mrc_007 !=null and mrc_007 !=''">and mrc_007 = #{mrc_007}</if>
+	<if test="mrc_008 !=null and mrc_008 !=''">and mrc_008 = #{mrc_008}</if>
+	<if test="mrc_009 !=null and mrc_009 !=''">and mrc_009 = #{mrc_009}</if>
+	<if test="mrc_010 !=null and mrc_010 !=''">and mrc_010 = #{mrc_010}</if>
+	<if test="mrc_011 !=null and mrc_011 !=''">and mrc_011 = #{mrc_011}</if>
+	<if test="mrc_012 !=null and mrc_012 !=''">and mrc_012 = #{mrc_012}</if>
+	<if test="mrc_013 !=null and mrc_013 !=''">and mrc_013 = #{mrc_013}</if>
+	<if test="mrc_014 !=null and mrc_014 !=''">and mrc_014 = #{mrc_014}</if>
+	<if test="mrc_015 !=null and mrc_015 !=''">and mrc_015 = #{mrc_015}</if>
+	<if test="mrc_016 !=null and mrc_016 !=''">and mrc_016 = #{mrc_016}</if>
+	<if test="mrc_017 !=null and mrc_017 !=''">and mrc_017 = #{mrc_017}</if>
+	<if test="mrc_018 !=null and mrc_018 !=''">and mrc_018 = #{mrc_018}</if>
+	<if test="mrc_019 !=null and mrc_019 !=''">and mrc_019 = #{mrc_019}</if>
+	<if test="mrc_020 !=null and mrc_020 !=''">and mrc_020 = #{mrc_020}</if>
+	<if test="mrc_gsid !=null and mrc_gsid !=''">and mrc_gsid = #{mrc_gsid}</if>
+	<if test="mrc_uuid !=null and mrc_uuid !=''">and mrc_uuid = #{mrc_uuid}</if>
+</sql>
+
+<sql id="selectWhereLike">
+	<if test="mrc_name !=null and mrc_name !=''">and mrc_name like CONCAT('%',#{mrc_name},'%')</if>
+	<if test="mrc_code !=null and mrc_code !=''">and mrc_code like CONCAT('%',#{mrc_code},'%')</if>
+	<if test="mrc_pid !=null and mrc_pid !=''">and mrc_pid like CONCAT('%',#{mrc_pid},'%')</if>
+	<if test="mrc_type !=null and mrc_type !=''">and mrc_type like CONCAT('%',#{mrc_type},'%')</if>
+	<if test="mrc_bz !=null and mrc_bz !=''">and mrc_bz like CONCAT('%',#{mrc_bz},'%')</if>
+	<if test="mrc_state !=null and mrc_state !=''">and mrc_state like CONCAT('%',#{mrc_state},'%')</if>
+	<if test="mrc_jb !=null and mrc_jb !=''">and mrc_jb like CONCAT('%',#{mrc_jb},'%')</if>
+	<if test="mrc_cdate !=null and mrc_cdate !=''">and mrc_cdate like CONCAT('%',#{mrc_cdate},'%')</if>
+	<if test="mrc_udate !=null and mrc_udate !=''">and mrc_udate like CONCAT('%',#{mrc_udate},'%')</if>
+	<if test="mrc_order !=null and mrc_order !=''">and mrc_order like CONCAT('%',#{mrc_order},'%')</if>
+	<if test="mrc_001 !=null and mrc_001 !=''">and mrc_001 like CONCAT('%',#{mrc_001},'%')</if>
+	<if test="mrc_002 !=null and mrc_002 !=''">and mrc_002 like CONCAT('%',#{mrc_002},'%')</if>
+	<if test="mrc_003 !=null and mrc_003 !=''">and mrc_003 like CONCAT('%',#{mrc_003},'%')</if>
+	<if test="mrc_004 !=null and mrc_004 !=''">and mrc_004 like CONCAT('%',#{mrc_004},'%')</if>
+	<if test="mrc_005 !=null and mrc_005 !=''">and mrc_005 like CONCAT('%',#{mrc_005},'%')</if>
+	<if test="mrc_006 !=null and mrc_006 !=''">and mrc_006 like CONCAT('%',#{mrc_006},'%')</if>
+	<if test="mrc_007 !=null and mrc_007 !=''">and mrc_007 like CONCAT('%',#{mrc_007},'%')</if>
+	<if test="mrc_008 !=null and mrc_008 !=''">and mrc_008 like CONCAT('%',#{mrc_008},'%')</if>
+	<if test="mrc_009 !=null and mrc_009 !=''">and mrc_009 like CONCAT('%',#{mrc_009},'%')</if>
+	<if test="mrc_010 !=null and mrc_010 !=''">and mrc_010 like CONCAT('%',#{mrc_010},'%')</if>
+	<if test="mrc_011 !=null and mrc_011 !=''">and mrc_011 like CONCAT('%',#{mrc_011},'%')</if>
+	<if test="mrc_012 !=null and mrc_012 !=''">and mrc_012 like CONCAT('%',#{mrc_012},'%')</if>
+	<if test="mrc_013 !=null and mrc_013 !=''">and mrc_013 like CONCAT('%',#{mrc_013},'%')</if>
+	<if test="mrc_014 !=null and mrc_014 !=''">and mrc_014 like CONCAT('%',#{mrc_014},'%')</if>
+	<if test="mrc_015 !=null and mrc_015 !=''">and mrc_015 like CONCAT('%',#{mrc_015},'%')</if>
+	<if test="mrc_016 !=null and mrc_016 !=''">and mrc_016 like CONCAT('%',#{mrc_016},'%')</if>
+	<if test="mrc_017 !=null and mrc_017 !=''">and mrc_017 like CONCAT('%',#{mrc_017},'%')</if>
+	<if test="mrc_018 !=null and mrc_018 !=''">and mrc_018 like CONCAT('%',#{mrc_018},'%')</if>
+	<if test="mrc_019 !=null and mrc_019 !=''">and mrc_019 like CONCAT('%',#{mrc_019},'%')</if>
+	<if test="mrc_020 !=null and mrc_020 !=''">and mrc_020 like CONCAT('%',#{mrc_020},'%')</if>
+	<if test="mrc_gsid !=null and mrc_gsid !=''">and mrc_gsid like CONCAT('%',#{mrc_gsid},'%')</if>
+</sql>
+
+<sql id="selectWhereIfPage">
+	<if test="pd.mrc_name !=null and pd.mrc_name !=''">and mrc_name = #{pd.mrc_name}</if>
+	<if test="pd.mrc_code !=null and pd.mrc_code !=''">and mrc_code = #{pd.mrc_code}</if>
+	<if test="pd.mrc_pid !=null and pd.mrc_pid !=''">and mrc_pid = #{pd.mrc_pid}</if>
+	<if test="pd.mrc_type !=null and pd.mrc_type !=''">and mrc_type = #{pd.mrc_type}</if>
+	<if test="pd.mrc_bz !=null and pd.mrc_bz !=''">and mrc_bz = #{pd.mrc_bz}</if>
+	<if test="pd.mrc_state !=null and pd.mrc_state !=''">and mrc_state = #{pd.mrc_state}</if>
+	<if test="pd.mrc_jb !=null and pd.mrc_jb !=''">and mrc_jb = #{pd.mrc_jb}</if>
+	<if test="pd.mrc_cdate !=null and pd.mrc_cdate !=''">and mrc_cdate = #{pd.mrc_cdate}</if>
+	<if test="pd.mrc_udate !=null and pd.mrc_udate !=''">and mrc_udate = #{pd.mrc_udate}</if>
+	<if test="pd.mrc_order !=null and pd.mrc_order !=''">and mrc_order = #{pd.mrc_order}</if>
+	<if test="pd.mrc_001 !=null and pd.mrc_001 !=''">and mrc_001 = #{pd.mrc_001}</if>
+	<if test="pd.mrc_002 !=null and pd.mrc_002 !=''">and mrc_002 = #{pd.mrc_002}</if>
+	<if test="pd.mrc_003 !=null and pd.mrc_003 !=''">and mrc_003 = #{pd.mrc_003}</if>
+	<if test="pd.mrc_004 !=null and pd.mrc_004 !=''">and mrc_004 = #{pd.mrc_004}</if>
+	<if test="pd.mrc_005 !=null and pd.mrc_005 !=''">and mrc_005 = #{pd.mrc_005}</if>
+	<if test="pd.mrc_006 !=null and pd.mrc_006 !=''">and mrc_006 = #{pd.mrc_006}</if>
+	<if test="pd.mrc_007 !=null and pd.mrc_007 !=''">and mrc_007 = #{pd.mrc_007}</if>
+	<if test="pd.mrc_008 !=null and pd.mrc_008 !=''">and mrc_008 = #{pd.mrc_008}</if>
+	<if test="pd.mrc_009 !=null and pd.mrc_009 !=''">and mrc_009 = #{pd.mrc_009}</if>
+	<if test="pd.mrc_010 !=null and pd.mrc_010 !=''">and mrc_010 = #{pd.mrc_010}</if>
+	<if test="pd.mrc_011 !=null and pd.mrc_011 !=''">and mrc_011 = #{pd.mrc_011}</if>
+	<if test="pd.mrc_012 !=null and pd.mrc_012 !=''">and mrc_012 = #{pd.mrc_012}</if>
+	<if test="pd.mrc_013 !=null and pd.mrc_013 !=''">and mrc_013 = #{pd.mrc_013}</if>
+	<if test="pd.mrc_014 !=null and pd.mrc_014 !=''">and mrc_014 = #{pd.mrc_014}</if>
+	<if test="pd.mrc_015 !=null and pd.mrc_015 !=''">and mrc_015 = #{pd.mrc_015}</if>
+	<if test="pd.mrc_016 !=null and pd.mrc_016 !=''">and mrc_016 = #{pd.mrc_016}</if>
+	<if test="pd.mrc_017 !=null and pd.mrc_017 !=''">and mrc_017 = #{pd.mrc_017}</if>
+	<if test="pd.mrc_018 !=null and pd.mrc_018 !=''">and mrc_018 = #{pd.mrc_018}</if>
+	<if test="pd.mrc_019 !=null and pd.mrc_019 !=''">and mrc_019 = #{pd.mrc_019}</if>
+	<if test="pd.mrc_020 !=null and pd.mrc_020 !=''">and mrc_020 = #{pd.mrc_020}</if>
+	<if test="pd.mrc_gsid !=null and pd.mrc_gsid !=''">and mrc_gsid = #{pd.mrc_gsid}</if>
+	<if test="pd.mrc_uuid !=null and pd.mrc_uuid !=''">and mrc_uuid = #{pd.mrc_uuid}</if>
+</sql>
+
+<sql id="updateSetAll">
+	mrc_name = #{mrc_name},
+	mrc_code = #{mrc_code},
+	mrc_pid = #{mrc_pid},
+	mrc_type = #{mrc_type},
+	mrc_bz = #{mrc_bz},
+	mrc_state = #{mrc_state},
+	mrc_jb = #{mrc_jb},
+	mrc_cdate = #{mrc_cdate},
+	mrc_udate = #{mrc_udate},
+	mrc_order = #{mrc_order},
+	mrc_001 = #{mrc_001},
+	mrc_002 = #{mrc_002},
+	mrc_003 = #{mrc_003},
+	mrc_004 = #{mrc_004},
+	mrc_005 = #{mrc_005},
+	mrc_006 = #{mrc_006},
+	mrc_007 = #{mrc_007},
+	mrc_008 = #{mrc_008},
+	mrc_009 = #{mrc_009},
+	mrc_010 = #{mrc_010},
+	mrc_011 = #{mrc_011},
+	mrc_012 = #{mrc_012},
+	mrc_013 = #{mrc_013},
+	mrc_014 = #{mrc_014},
+	mrc_015 = #{mrc_015},
+	mrc_016 = #{mrc_016},
+	mrc_017 = #{mrc_017},
+	mrc_018 = #{mrc_018},
+	mrc_019 = #{mrc_019},
+	mrc_020 = #{mrc_020},
+	mrc_gsid = #{mrc_gsid},
+</sql>
+
+<sql id="updateSetIf">
+	<if test="mrc_name !=null and mrc_name !=''">mrc_name = #{mrc_name},</if>
+	<if test="mrc_code !=null and mrc_code !=''">mrc_code = #{mrc_code},</if>
+	<if test="mrc_pid !=null and mrc_pid !=''">mrc_pid = #{mrc_pid},</if>
+	<if test="mrc_type !=null and mrc_type !=''">mrc_type = #{mrc_type},</if>
+	<if test="mrc_bz !=null and mrc_bz !=''">mrc_bz = #{mrc_bz},</if>
+	<if test="mrc_state !=null and mrc_state !=''">mrc_state = #{mrc_state},</if>
+	<if test="mrc_jb !=null and mrc_jb !=''">mrc_jb = #{mrc_jb},</if>
+	<if test="mrc_cdate !=null and mrc_cdate !=''">mrc_cdate = #{mrc_cdate},</if>
+	<if test="mrc_udate !=null and mrc_udate !=''">mrc_udate = #{mrc_udate},</if>
+	<if test="mrc_order !=null and mrc_order !=''">mrc_order = #{mrc_order},</if>
+	<if test="mrc_001 !=null and mrc_001 !=''">mrc_001 = #{mrc_001},</if>
+	<if test="mrc_002 !=null and mrc_002 !=''">mrc_002 = #{mrc_002},</if>
+	<if test="mrc_003 !=null and mrc_003 !=''">mrc_003 = #{mrc_003},</if>
+	<if test="mrc_004 !=null and mrc_004 !=''">mrc_004 = #{mrc_004},</if>
+	<if test="mrc_005 !=null and mrc_005 !=''">mrc_005 = #{mrc_005},</if>
+	<if test="mrc_006 !=null and mrc_006 !=''">mrc_006 = #{mrc_006},</if>
+	<if test="mrc_007 !=null and mrc_007 !=''">mrc_007 = #{mrc_007},</if>
+	<if test="mrc_008 !=null and mrc_008 !=''">mrc_008 = #{mrc_008},</if>
+	<if test="mrc_009 !=null and mrc_009 !=''">mrc_009 = #{mrc_009},</if>
+	<if test="mrc_010 !=null and mrc_010 !=''">mrc_010 = #{mrc_010},</if>
+	<if test="mrc_011 !=null and mrc_011 !=''">mrc_011 = #{mrc_011},</if>
+	<if test="mrc_012 !=null and mrc_012 !=''">mrc_012 = #{mrc_012},</if>
+	<if test="mrc_013 !=null and mrc_013 !=''">mrc_013 = #{mrc_013},</if>
+	<if test="mrc_014 !=null and mrc_014 !=''">mrc_014 = #{mrc_014},</if>
+	<if test="mrc_015 !=null and mrc_015 !=''">mrc_015 = #{mrc_015},</if>
+	<if test="mrc_016 !=null and mrc_016 !=''">mrc_016 = #{mrc_016},</if>
+	<if test="mrc_017 !=null and mrc_017 !=''">mrc_017 = #{mrc_017},</if>
+	<if test="mrc_018 !=null and mrc_018 !=''">mrc_018 = #{mrc_018},</if>
+	<if test="mrc_019 !=null and mrc_019 !=''">mrc_019 = #{mrc_019},</if>
+	<if test="mrc_020 !=null and mrc_020 !=''">mrc_020 = #{mrc_020},</if>
+	<if test="mrc_gsid !=null and mrc_gsid !=''">mrc_gsid = #{mrc_gsid},</if>
+</sql>
+
+<sql id="updateSetIfNull">
+	<if test="mrc_name !=null">mrc_name = #{mrc_name},</if>
+	<if test="mrc_code !=null">mrc_code = #{mrc_code},</if>
+	<if test="mrc_pid !=null">mrc_pid = #{mrc_pid},</if>
+	<if test="mrc_type !=null">mrc_type = #{mrc_type},</if>
+	<if test="mrc_bz !=null">mrc_bz = #{mrc_bz},</if>
+	<if test="mrc_state !=null">mrc_state = #{mrc_state},</if>
+	<if test="mrc_jb !=null">mrc_jb = #{mrc_jb},</if>
+	<if test="mrc_cdate !=null">mrc_cdate = #{mrc_cdate},</if>
+	<if test="mrc_udate !=null">mrc_udate = #{mrc_udate},</if>
+	<if test="mrc_order !=null">mrc_order = #{mrc_order},</if>
+	<if test="mrc_001 !=null">mrc_001 = #{mrc_001},</if>
+	<if test="mrc_002 !=null">mrc_002 = #{mrc_002},</if>
+	<if test="mrc_003 !=null">mrc_003 = #{mrc_003},</if>
+	<if test="mrc_004 !=null">mrc_004 = #{mrc_004},</if>
+	<if test="mrc_005 !=null">mrc_005 = #{mrc_005},</if>
+	<if test="mrc_006 !=null">mrc_006 = #{mrc_006},</if>
+	<if test="mrc_007 !=null">mrc_007 = #{mrc_007},</if>
+	<if test="mrc_008 !=null">mrc_008 = #{mrc_008},</if>
+	<if test="mrc_009 !=null">mrc_009 = #{mrc_009},</if>
+	<if test="mrc_010 !=null">mrc_010 = #{mrc_010},</if>
+	<if test="mrc_011 !=null">mrc_011 = #{mrc_011},</if>
+	<if test="mrc_012 !=null">mrc_012 = #{mrc_012},</if>
+	<if test="mrc_013 !=null">mrc_013 = #{mrc_013},</if>
+	<if test="mrc_014 !=null">mrc_014 = #{mrc_014},</if>
+	<if test="mrc_015 !=null">mrc_015 = #{mrc_015},</if>
+	<if test="mrc_016 !=null">mrc_016 = #{mrc_016},</if>
+	<if test="mrc_017 !=null">mrc_017 = #{mrc_017},</if>
+	<if test="mrc_018 !=null">mrc_018 = #{mrc_018},</if>
+	<if test="mrc_019 !=null">mrc_019 = #{mrc_019},</if>
+	<if test="mrc_020 !=null">mrc_020 = #{mrc_020},</if>
+	<if test="mrc_gsid !=null">mrc_gsid = #{mrc_gsid},</if>
+</sql>
+
+<sql id="updateEdit">
+	mrc_name = #{mrc_name},
+	mrc_code = #{mrc_code},
+	mrc_pid = #{mrc_pid},
+	mrc_type = #{mrc_type},
+	mrc_bz = #{mrc_bz},
+	mrc_state = #{mrc_state},
+	mrc_udate = #{mrc_udate},
+	mrc_order = #{mrc_order},
+	mrc_gsid = #{mrc_gsid},
+</sql>	
+	
+<sql id="cmdIf">
+	<if test="cmd !=null">${cmd}</if>
+</sql>
+
+
+	<!-- 新增-->
+	<insert id="save" parameterType="pd">
+		insert into mb_reng_corporatesector(<include refid="selectFiled"/>) values (<include refid="insertValues"/>)
+	</insert>
+	
+	<!-- 删除(根据非空(null,empty)属性值)-->
+	<delete id="deleteIf" parameterType="pd">
+		delete from mb_reng_corporatesector<where><include refid="selectWhereIf"/></where><include refid="cmdIf"/>
+	</delete>
+
+	<!-- 删除(根据主键)-->
+	<delete id="delete" parameterType="pd">
+		delete from mb_reng_corporatesector
+		where 
+			mrc_uuid = #{mrc_uuid}
+	</delete>	
+	
+	<!-- 修改(根据主键只修改属于前台录入的字段) -->
+	<update id="edit" parameterType="pd">
+		update  mb_reng_corporatesector <set><include refid="updateEdit"/></set>
+		where 
+			mrc_uuid = #{mrc_uuid}
+	</update>
+
+	<!-- 修改(根据主键修改所有字段) -->
+	<update id="updateSetAll" parameterType="pd">
+		update mb_reng_corporatesector <set><include refid="updateSetAll"/></set>
+		where 
+			mrc_uuid = #{mrc_uuid}
+	</update>
+	
+	<!-- 修改(根据主键修改非空(null,empty)字段) -->
+	<update id="updateSetIf" parameterType="pd">
+		update mb_reng_corporatesector <set><include refid="updateSetIf"/></set>
+		where 
+			mrc_uuid = #{mrc_uuid}
+	</update>
+
+	<!-- 修改(根据主键修改非空(null)字段) -->
+	<update id="updateSetIfNull" parameterType="pd">
+		update mb_reng_corporatesector <set><include refid="updateSetIfNull"/></set>
+		where 
+			mrc_uuid = #{mrc_uuid}
+	</update>
+		
+	<!-- 修改(根据自定义条件修改非空(null,empty)字段) -->
+	<update id="updateSetIfByCmd" parameterType="pd">
+		update mb_reng_corporatesector <set><include refid="updateSetIf"/></set><include refid="cmdIf"/>
+	</update>
+	
+	<!-- 通过主键id获取单条数据 -->
+	<select id="findById" parameterType="pd" resultType="pd">
+		select<include refid="selectFiled"/>from mb_reng_corporatesector
+		where 
+			mrc_uuid = #{mrc_uuid}
+	</select>
+	
+	<!-- 列表(分页无where条件) -->
+	<select id="datalistPage" parameterType="page" resultType="pd">
+		select<include refid="selectFiled"/>from mb_reng_corporatesector
+	</select>
+	
+	<!-- 列表(分页有where条件有cmd) -->
+	<select id="dataWherelistPage" parameterType="page" resultType="pd">
+		select<include refid="selectFiled"/>from mb_reng_corporatesector
+		<where><include refid="selectWhereIfPage"/></where><if test="pd.cmd !=null">${pd.cmd}</if>
+	</select>
+	
+	<!-- 列表(全部) -->
+	<select id="listAll" resultType="pd">
+		select<include refid="selectFiled"/>from mb_reng_corporatesector
+	</select>
+	
+	
+	<!-- 列表(查非空(null,empty)属性值) -->
+	<select id="listIf" parameterType="pd" resultType="pd">
+		select<include refid="selectFiled"/>from mb_reng_corporatesector
+		<where><include refid="selectWhereIf"/></where><include refid="cmdIf"/>
+	</select>
+
+	<!-- 列表(like查询) -->
+	<select id="listLike" parameterType="pd" resultType="pd">
+		select<include refid="selectFiled"/>from mb_reng_corporatesector
+		<where><include refid="selectWhereLike"/></where><include refid="cmdIf"/>
+	</select>	
+	
+	<!-- 列表(查自定义条件) -->
+	<select id="listCmd" parameterType="pd" resultType="pd">
+		select<include refid="selectFiled"/>from mb_reng_corporatesector<include refid="cmdIf"/>
+	</select>
+	
+	<!-- 批量删除(根据主键数组) -->
+	<delete id="deleteAll" parameterType="String">
+		delete from mb_reng_corporatesector
+		where 
+			mrc_uuid in
+		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+            #{item}
+		</foreach>
+	</delete>
+	<!-- ========================================以上系统自动生成================================================================== -->
+	
+		<!-- 列表(分页) -->
+	<select id="data2listPage" parameterType="page" resultType="pd">
+		select 
+			c.*,
+			count(zi.mrc_uuid) as childCount,
+			p.mrc_uuid as pmrc_uuid,
+			p.mrc_name as pmrc_name,
+			p.mrc_code as pmrc_code,
+			p.mrc_pid as pmrc_pid,
+			p.mrc_type as pmrc_type,
+			p.mrc_bz as pmrc_bz,
+			p.mrc_state as pmrc_state,
+			p.mrc_jb as pmrc_jb,
+			p.mrc_cdate as pmrc_cdate,
+			p.mrc_udate as pmrc_udate,
+			p.mrc_order as pmrc_order,
+			p.mrc_001 as pmrc_001,
+			p.mrc_002 as pmrc_002,
+			p.mrc_003 as pmrc_003,
+			p.mrc_004 as pmrc_004,
+			p.mrc_005 as pmrc_005,
+			p.mrc_006 as pmrc_006,
+			p.mrc_007 as pmrc_007,
+			p.mrc_008 as pmrc_008,
+			p.mrc_009 as pmrc_009,
+			p.mrc_010 as pmrc_010,
+			p.mrc_011 as pmrc_011,
+			p.mrc_012 as pmrc_012,
+			p.mrc_013 as pmrc_013,
+			p.mrc_014 as pmrc_014,
+			p.mrc_015 as pmrc_015,
+			p.mrc_016 as pmrc_016,
+			p.mrc_017 as pmrc_017,
+			p.mrc_018 as pmrc_018,
+			p.mrc_019 as pmrc_019,
+			p.mrc_020 as pmrc_020,
+			p.mrc_gsid as pmrc_gsid
+		 from mb_reng_corporatesector c
+		left join mb_reng_corporatesector p on c.mrc_pid=p.mrc_uuid
+		left join mb_reng_corporatesector zi on c.mrc_uuid=zi.mrc_pid
+		<where>
+		<if test="pd.mrc_name !=null and pd.mrc_name !=''">and c.mrc_name like CONCAT('%',#{pd.mrc_name},'%')</if>
+		<if test="pd.mrc_code !=null and pd.mrc_code!=''">and c.mrc_code=#{pd.mrc_code}</if>
+		<if test="pd.mrc_type !=null and pd.mrc_type!=''">and c.mrc_type=#{pd.mrc_type}</if>
+		<if test="pd.mrc_pid !=null and pd.mrc_pid!=''">and c.mrc_pid=#{pd.mrc_pid}</if>
+		<if test="pd.mrc_state !=null and pd.mrc_state!=''">and c.mrc_state=#{pd.mrc_state}</if>
+		<if test="pd.pmrc_name !=null and pd.pmrc_name !=''">and p.mrc_name like CONCAT('%',#{pd.pmrc_name},'%')</if>
+		<if test="pd.lastLoginStart!=null and pd.lastLoginStart!=''">
+			AND c.mrc_udate &gt;= #{pd.lastLoginStart} 
+		</if>
+		<if test="pd.lastLoginEnd!=null and pd.lastLoginEnd!=''">
+			AND c.mrc_udate &lt;= #{pd.lastLoginEnd} 
+		</if>
+		</where>
+		group by c.mrc_uuid
+		order by c.mrc_gsid,c.mrc_type,c.mrc_name,c.mrc_uuid
+	</select>
+	
+	<!-- 列表(查非空(null,empty)属性值) 关联了上级-->
+	<select id="listIf2" parameterType="pd" resultType="pd">
+		select t.*,
+			p.mrc_uuid as pmrc_uuid,
+			p.mrc_name as pmrc_name,
+			p.mrc_code as pmrc_code,
+			p.mrc_pid as pmrc_pid,
+			p.mrc_type as pmrc_type,
+			p.mrc_bz as pmrc_bz,
+			p.mrc_state as pmrc_state,
+			p.mrc_jb as pmrc_jb,
+			p.mrc_cdate as pmrc_cdate,
+			p.mrc_udate as pmrc_udate,
+			p.mrc_order as pmrc_order,
+			p.mrc_001 as pmrc_001,
+			p.mrc_002 as pmrc_002,
+			p.mrc_003 as pmrc_003,
+			p.mrc_004 as pmrc_004,
+			p.mrc_005 as pmrc_005,
+			p.mrc_006 as pmrc_006,
+			p.mrc_007 as pmrc_007,
+			p.mrc_008 as pmrc_008,
+			p.mrc_009 as pmrc_009,
+			p.mrc_010 as pmrc_010,
+			p.mrc_011 as pmrc_011,
+			p.mrc_012 as pmrc_012,
+			p.mrc_013 as pmrc_013,
+			p.mrc_014 as pmrc_014,
+			p.mrc_015 as pmrc_015,
+			p.mrc_016 as pmrc_016,
+			p.mrc_017 as pmrc_017,
+			p.mrc_018 as pmrc_018,
+			p.mrc_019 as pmrc_019,
+			p.mrc_020 as pmrc_020,
+			p.mrc_gsid as pmrc_gsid
+		 from mb_reng_corporatesector t
+		 left join mb_reng_corporatesector p on t.mrc_pid=p.mrc_uuid
+		<where>
+			<if test="mrc_name !=null and t.mrc_name !=''">and t.mrc_name = #{mrc_name}</if>
+			<if test="mrc_code !=null and t.mrc_code !=''">and t.mrc_code = #{mrc_code}</if>
+			<if test="mrc_pid !=null and t.mrc_pid !=''">and t.mrc_pid = #{mrc_pid}</if>
+			<if test="mrc_type !=null and t.mrc_type !=''">and t.mrc_type = #{mrc_type}</if>
+			<if test="mrc_bz !=null and t.mrc_bz !=''">and t.mrc_bz = #{mrc_bz}</if>
+			<if test="mrc_state !=null and t.mrc_state !=''">and t.mrc_state = #{mrc_state}</if>
+			<if test="mrc_jb !=null and t.mrc_jb !=''">and t.mrc_jb = #{mrc_jb}</if>
+			<if test="mrc_cdate !=null and t.mrc_cdate !=''">and t.mrc_cdate = #{mrc_cdate}</if>
+			<if test="mrc_udate !=null and t.mrc_udate !=''">and t.mrc_udate = #{mrc_udate}</if>
+			<if test="mrc_order !=null and t.mrc_order !=''">and t.mrc_order = #{mrc_order}</if>
+			<if test="mrc_001 !=null and t.mrc_001 !=''">and t.mrc_001 = #{mrc_001}</if>
+			<if test="mrc_002 !=null and t.mrc_002 !=''">and t.mrc_002 = #{mrc_002}</if>
+			<if test="mrc_003 !=null and t.mrc_003 !=''">and t.mrc_003 = #{mrc_003}</if>
+			<if test="mrc_004 !=null and t.mrc_004 !=''">and t.mrc_004 = #{mrc_004}</if>
+			<if test="mrc_005 !=null and t.mrc_005 !=''">and t.mrc_005 = #{mrc_005}</if>
+			<if test="mrc_006 !=null and t.mrc_006 !=''">and t.mrc_006 = #{mrc_006}</if>
+			<if test="mrc_007 !=null and t.mrc_007 !=''">and t.mrc_007 = #{mrc_007}</if>
+			<if test="mrc_008 !=null and t.mrc_008 !=''">and t.mrc_008 = #{mrc_008}</if>
+			<if test="mrc_009 !=null and t.mrc_009 !=''">and t.mrc_009 = #{mrc_009}</if>
+			<if test="mrc_010 !=null and t.mrc_010 !=''">and t.mrc_010 = #{mrc_010}</if>
+			<if test="mrc_011 !=null and t.mrc_011 !=''">and t.mrc_011 = #{mrc_011}</if>
+			<if test="mrc_012 !=null and t.mrc_012 !=''">and t.mrc_012 = #{mrc_012}</if>
+			<if test="mrc_013 !=null and t.mrc_013 !=''">and t.mrc_013 = #{mrc_013}</if>
+			<if test="mrc_014 !=null and t.mrc_014 !=''">and t.mrc_014 = #{mrc_014}</if>
+			<if test="mrc_015 !=null and t.mrc_015 !=''">and t.mrc_015 = #{mrc_015}</if>
+			<if test="mrc_016 !=null and t.mrc_016 !=''">and t.mrc_016 = #{mrc_016}</if>
+			<if test="mrc_017 !=null and t.mrc_017 !=''">and t.mrc_017 = #{mrc_017}</if>
+			<if test="mrc_018 !=null and t.mrc_018 !=''">and t.mrc_018 = #{mrc_018}</if>
+			<if test="mrc_019 !=null and t.mrc_019 !=''">and t.mrc_019 = #{mrc_019}</if>
+			<if test="mrc_020 !=null and t.mrc_020 !=''">and t.mrc_020 = #{mrc_020}</if>
+			<if test="mrc_gsid !=null and t.mrc_gsid !=''">and t.mrc_gsid = #{mrc_gsid}</if>
+			<if test="mrc_uuid !=null and t.mrc_uuid !=''">and t.mrc_uuid = #{mrc_uuid}</if>
+		</where><include refid="cmdIf"/>
+	</select>
+	
+	
+</mapper>

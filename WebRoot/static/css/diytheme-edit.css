@@ -1,0 +1,146 @@
+﻿/* 该样式重写于 ！编辑页面！ */
+table {
+  border: 0 !important;
+}
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"] {
+  margin: 0 !important;
+}
+
+/* 输入框底部 */
+select:focus,
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+select:hover,
+textarea:hover,
+input[type="text"]:hover,
+input[type="password"]:hover,
+input[type="datetime"]:hover,
+input[type="datetime-local"]:hover,
+input[type="date"]:hover,
+input[type="month"]:hover,
+input[type="time"]:hover,
+input[type="week"]:hover,
+input[type="number"]:hover,
+input[type="email"]:hover,
+input[type="url"]:hover,
+input[type="search"]:hover,
+input[type="tel"]:hover,
+input[type="color"]:hover {
+  box-shadow: none;
+  border-color: #2286d9;
+}
+/* 每个第一个td */
+td:first-of-type {
+  text-align: right;
+}
+
+/* 基本信息-地址钥匙-底部保存按钮 */
+
+/* 需要主动添加class */
+
+.title-xinxi,
+.title-yaoshi,
+.td-botom {
+  text-align: center !important;
+  padding: 10px 0 !important;
+  background: #e3f1fc !important;
+}
+
+/* 表格默认内容居中 */
+
+.table th,
+.table td {
+  vertical-align: baseline;
+}
+
+/* 整体颜色 */
+
+.table-bordered {
+  background-color: #f9fcfe !important;
+}
+
+/* 每两行填充一次 */
+
+.table-striped tbody > tr:nth-child(odd) > td,
+.table-striped tbody > tr:nth-child(odd) > th {
+  background-color: transparent;
+}
+
+table,
+tbody,
+th,
+td,
+.table-bordered thead:first-child tr th,
+.table-bordered th,
+.table-bordered td {
+  border: 0;
+}
+
+/* 这才是真正的table每行hover */
+
+.table-hover tbody tr:hover td,
+.table-hover tbody tr:hover th {
+  background-color: transparent;
+}
+
+/* 滚动条 */
+
+/*—滚动条默认显示样式–*/
+
+::-webkit-scrollbar-thumb {
+  background-color: #018ee8;
+  height: 50px;
+  outline-offset: -2px;
+  outline: 2px solid #fff;
+  -webkit-border-radius: 4px;
+  border: 2px solid #fff;
+}
+
+/*—鼠标点击滚动条显示样式–*/
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #fb4446;
+  height: 50px;
+  -webkit-border-radius: 4px;
+}
+
+/*—滚动条大小–*/
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 18px;
+}
+
+/*—滚动框背景样式–*/
+
+::-webkit-scrollbar-track-piece {
+  background-color: #fff;
+  -webkit-border-radius: 0;
+}

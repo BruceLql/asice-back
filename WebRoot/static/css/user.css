@@ -1,0 +1,142 @@
+@import url("https://at.alicdn.com/t/font_817575_wnhhaqn7vv.css"); /* 图标 */
+* {
+  margin: 0;
+  padding: 0;
+}
+textarea,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+textarea {
+  width: 100%;
+}
+html {
+  font-size: 14px;
+}
+th {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: left;
+}
+th,
+td {
+  padding: 15px;
+}
+table {
+  max-width: 100%;
+  width: 100%;
+  white-space: nowrap;
+  color: #6b7182;
+  margin: 8px 0;
+  border-collapse: collapse;
+}
+table tbody td {
+  border: 1px solid #ebeef5;
+}
+/* 按钮 */
+.box {
+  padding: 10px;
+}
+/* 居中 */
+.td-center {
+  text-align: center;
+}
+/* 按钮样式 */
+.button_click {
+  cursor: pointer;
+  color: #6b7182;
+  font-size: 18px;
+  margin-right: 10px;
+}
+.button_click:hover {
+  text-decoration: underline;
+}
+.tdbgc {
+  background-color: #f6f8fc;
+  text-align: center;
+}
+/* 返回按钮样式 */
+.td-botom {
+  text-align: center;
+  color: #fff;
+  background-color: #82c7e8;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 4px;
+  outline: 0;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+/* 返回按钮 */
+.td-botom:hover {
+  background: rgba(107, 113, 130, 0.8);
+}
+/* 照片留 */
+.idcardpictuerd {
+  height: 150px;
+  text-align: center;
+}
+.idcardpictuerd img {
+  height: 150px;
+}
+/* 审核 */
+.Menu_button {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+  margin: 5px 0;
+}
+.examine {
+  min-width: 100px;
+  padding: 0 10px;
+  border: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background-color: #1890ff;
+  color: #fff;
+  font-size: 16px;
+  height: 40px;
+  line-height: 40px;
+  outline: 0;
+  text-align: center;
+  border-radius: 4px !important;
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.examine:hover {
+  background-color: #117add;
+}
+.red {
+  background-color: #e57373;
+}
+.red:hover {
+  background-color: #ea5050;
+  color: #fff;
+}
+.green {
+  background-color: #81c784;
+}
+.green:hover {
+  background-color: rgb(32, 165, 32);
+  color: #fff;
+}
+
+.orange {
+  background-color: #ff9c4b;
+}
+.orange:hover {
+  background-color: rgb(255, 152, 17);
+  color: #fff;
+}

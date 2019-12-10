@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ParamMapper">
+	
+<sql id="selectFiled">
+	PARAM_ID,
+	BIZ_SYS_PROD_C001,
+	BIZ_SYS_PROD_C002,
+	BIZ_SYS_PROD_C003,
+	BIZ_SYS_PROD_C004,
+	BIZ_SYS_PROD_C005,
+	BIZ_SYS_PROD_C006,
+	BIZ_SYS_PROD_C007,
+	BIZ_SYS_PROD_C008,
+	BIZ_SYS_PROD_C009,
+	BIZ_SYS_PROD_C010,
+	BIZ_SYS_PROD_C011,
+	BIZ_SYS_PROD_C012,
+	BIZ_SYS_PROD_C013,
+	BIZ_SYS_PROD_C014,
+	BIZ_SYS_PROD_C015,
+	BIZ_SYS_PROD_C016,
+	BIZ_SYS_PROD_C017,
+	BIZ_SYS_PROD_C018,
+	BIZ_SYS_PROD_C019,
+	BIZ_SYS_PROD_C020,
+	BIZ_SYS_PROD_C021,
+	BIZ_SYS_PROD_C022,
+	BIZ_SYS_PROD_C023
+</sql>
+
+<sql id="insertValues">
+	#{PARAM_ID},
+	#{BIZ_SYS_PROD_C001},
+	#{BIZ_SYS_PROD_C002},
+	#{BIZ_SYS_PROD_C003},
+	#{BIZ_SYS_PROD_C004},
+	#{BIZ_SYS_PROD_C005},
+	#{BIZ_SYS_PROD_C006},
+	#{BIZ_SYS_PROD_C007},
+	#{BIZ_SYS_PROD_C008},
+	#{BIZ_SYS_PROD_C009},
+	#{BIZ_SYS_PROD_C010},
+	#{BIZ_SYS_PROD_C011},
+	#{BIZ_SYS_PROD_C012},
+	#{BIZ_SYS_PROD_C013},
+	#{BIZ_SYS_PROD_C014},
+	#{BIZ_SYS_PROD_C015},
+	#{BIZ_SYS_PROD_C016},
+	#{BIZ_SYS_PROD_C017},
+	#{BIZ_SYS_PROD_C018},
+	#{BIZ_SYS_PROD_C019},
+	#{BIZ_SYS_PROD_C020},
+	#{BIZ_SYS_PROD_C021},
+	#{BIZ_SYS_PROD_C022},
+	#{BIZ_SYS_PROD_C023}
+</sql>
+
+<sql id="selectWhereIf">
+	<if test="PARAM_ID !=null and PARAM_ID !=''">and PARAM_ID = #{PARAM_ID}</if>
+	<if test="BIZ_SYS_PROD_C001 !=null and BIZ_SYS_PROD_C001 !=''">and BIZ_SYS_PROD_C001 = #{BIZ_SYS_PROD_C001}</if>
+	<if test="BIZ_SYS_PROD_C002 !=null and BIZ_SYS_PROD_C002 !=''">and BIZ_SYS_PROD_C002 = #{BIZ_SYS_PROD_C002}</if>
+	<if test="BIZ_SYS_PROD_C003 !=null and BIZ_SYS_PROD_C003 !=''">and BIZ_SYS_PROD_C003 = #{BIZ_SYS_PROD_C003}</if>
+	<if test="BIZ_SYS_PROD_C004 !=null and BIZ_SYS_PROD_C004 !=''">and BIZ_SYS_PROD_C004 = #{BIZ_SYS_PROD_C004}</if>
+	<if test="BIZ_SYS_PROD_C005 !=null and BIZ_SYS_PROD_C005 !=''">and BIZ_SYS_PROD_C005 = #{BIZ_SYS_PROD_C005}</if>
+	<if test="BIZ_SYS_PROD_C006 !=null and BIZ_SYS_PROD_C006 !=''">and BIZ_SYS_PROD_C006 = #{BIZ_SYS_PROD_C006}</if>
+	<if test="BIZ_SYS_PROD_C007 !=null and BIZ_SYS_PROD_C007 !=''">and BIZ_SYS_PROD_C007 = #{BIZ_SYS_PROD_C007}</if>
+	<if test="BIZ_SYS_PROD_C008 !=null and BIZ_SYS_PROD_C008 !=''">and BIZ_SYS_PROD_C008 = #{BIZ_SYS_PROD_C008}</if>
+	<if test="BIZ_SYS_PROD_C009 !=null and BIZ_SYS_PROD_C009 !=''">and BIZ_SYS_PROD_C009 = #{BIZ_SYS_PROD_C009}</if>
+	<if test="BIZ_SYS_PROD_C010 !=null and BIZ_SYS_PROD_C010 !=''">and BIZ_SYS_PROD_C010 = #{BIZ_SYS_PROD_C010}</if>
+	<if test="BIZ_SYS_PROD_C011 !=null and BIZ_SYS_PROD_C011 !=''">and BIZ_SYS_PROD_C011 = #{BIZ_SYS_PROD_C011}</if>
+	<if test="BIZ_SYS_PROD_C012 !=null and BIZ_SYS_PROD_C012 !=''">and BIZ_SYS_PROD_C012 = #{BIZ_SYS_PROD_C012}</if>
+	<if test="BIZ_SYS_PROD_C013 !=null and BIZ_SYS_PROD_C013 !=''">and BIZ_SYS_PROD_C013 = #{BIZ_SYS_PROD_C013}</if>
+	<if test="BIZ_SYS_PROD_C014 !=null and BIZ_SYS_PROD_C014 !=''">and BIZ_SYS_PROD_C014 = #{BIZ_SYS_PROD_C014}</if>
+	<if test="BIZ_SYS_PROD_C015 !=null and BIZ_SYS_PROD_C015 !=''">and BIZ_SYS_PROD_C015 = #{BIZ_SYS_PROD_C015}</if>
+	<if test="BIZ_SYS_PROD_C016 !=null and BIZ_SYS_PROD_C016 !=''">and BIZ_SYS_PROD_C016 = #{BIZ_SYS_PROD_C016}</if>
+	<if test="BIZ_SYS_PROD_C017 !=null and BIZ_SYS_PROD_C017 !=''">and BIZ_SYS_PROD_C017 = #{BIZ_SYS_PROD_C017}</if>
+	<if test="BIZ_SYS_PROD_C018 !=null and BIZ_SYS_PROD_C018 !=''">and BIZ_SYS_PROD_C018 = #{BIZ_SYS_PROD_C018}</if>
+	<if test="BIZ_SYS_PROD_C019 !=null and BIZ_SYS_PROD_C019 !=''">and BIZ_SYS_PROD_C019 = #{BIZ_SYS_PROD_C019}</if>
+	<if test="BIZ_SYS_PROD_C020 !=null and BIZ_SYS_PROD_C020 !=''">and BIZ_SYS_PROD_C020 = #{BIZ_SYS_PROD_C020}</if>
+	<if test="BIZ_SYS_PROD_C021 !=null and BIZ_SYS_PROD_C021 !=''">and BIZ_SYS_PROD_C021 = #{BIZ_SYS_PROD_C021}</if>
+	<if test="BIZ_SYS_PROD_C022 !=null and BIZ_SYS_PROD_C022 !=''">and BIZ_SYS_PROD_C022 = #{BIZ_SYS_PROD_C022}</if>
+	<if test="BIZ_SYS_PROD_C023 !=null and BIZ_SYS_PROD_C023 !=''">and BIZ_SYS_PROD_C023 = #{BIZ_SYS_PROD_C023}</if>
+</sql>
+
+<sql id="selectWhereLike">
+	<if test="PARAM_ID !=null and PARAM_ID !=''">and PARAM_ID like CONCAT('%',#{PARAM_ID},'%')</if>
+	<if test="BIZ_SYS_PROD_C001 !=null and BIZ_SYS_PROD_C001 !=''">and BIZ_SYS_PROD_C001 like CONCAT('%',#{BIZ_SYS_PROD_C001},'%')</if>
+	<if test="BIZ_SYS_PROD_C002 !=null and BIZ_SYS_PROD_C002 !=''">and BIZ_SYS_PROD_C002 like CONCAT('%',#{BIZ_SYS_PROD_C002},'%')</if>
+	<if test="BIZ_SYS_PROD_C003 !=null and BIZ_SYS_PROD_C003 !=''">and BIZ_SYS_PROD_C003 like CONCAT('%',#{BIZ_SYS_PROD_C003},'%')</if>
+	<if test="BIZ_SYS_PROD_C004 !=null and BIZ_SYS_PROD_C004 !=''">and BIZ_SYS_PROD_C004 like CONCAT('%',#{BIZ_SYS_PROD_C004},'%')</if>
+	<if test="BIZ_SYS_PROD_C005 !=null and BIZ_SYS_PROD_C005 !=''">and BIZ_SYS_PROD_C005 like CONCAT('%',#{BIZ_SYS_PROD_C005},'%')</if>
+	<if test="BIZ_SYS_PROD_C006 !=null and BIZ_SYS_PROD_C006 !=''">and BIZ_SYS_PROD_C006 like CONCAT('%',#{BIZ_SYS_PROD_C006},'%')</if>
+	<if test="BIZ_SYS_PROD_C007 !=null and BIZ_SYS_PROD_C007 !=''">and BIZ_SYS_PROD_C007 like CONCAT('%',#{BIZ_SYS_PROD_C007},'%')</if>
+	<if test="BIZ_SYS_PROD_C008 !=null and BIZ_SYS_PROD_C008 !=''">and BIZ_SYS_PROD_C008 like CONCAT('%',#{BIZ_SYS_PROD_C008},'%')</if>
+	<if test="BIZ_SYS_PROD_C009 !=null and BIZ_SYS_PROD_C009 !=''">and BIZ_SYS_PROD_C009 like CONCAT('%',#{BIZ_SYS_PROD_C009},'%')</if>
+	<if test="BIZ_SYS_PROD_C010 !=null and BIZ_SYS_PROD_C010 !=''">and BIZ_SYS_PROD_C010 like CONCAT('%',#{BIZ_SYS_PROD_C010},'%')</if>
+	<if test="BIZ_SYS_PROD_C011 !=null and BIZ_SYS_PROD_C011 !=''">and BIZ_SYS_PROD_C011 like CONCAT('%',#{BIZ_SYS_PROD_C011},'%')</if>
+	<if test="BIZ_SYS_PROD_C012 !=null and BIZ_SYS_PROD_C012 !=''">and BIZ_SYS_PROD_C012 like CONCAT('%',#{BIZ_SYS_PROD_C012},'%')</if>
+	<if test="BIZ_SYS_PROD_C013 !=null and BIZ_SYS_PROD_C013 !=''">and BIZ_SYS_PROD_C013 like CONCAT('%',#{BIZ_SYS_PROD_C013},'%')</if>
+	<if test="BIZ_SYS_PROD_C014 !=null and BIZ_SYS_PROD_C014 !=''">and BIZ_SYS_PROD_C014 like CONCAT('%',#{BIZ_SYS_PROD_C014},'%')</if>
+	<if test="BIZ_SYS_PROD_C015 !=null and BIZ_SYS_PROD_C015 !=''">and BIZ_SYS_PROD_C015 like CONCAT('%',#{BIZ_SYS_PROD_C015},'%')</if>
+	<if test="BIZ_SYS_PROD_C016 !=null and BIZ_SYS_PROD_C016 !=''">and BIZ_SYS_PROD_C016 like CONCAT('%',#{BIZ_SYS_PROD_C016},'%')</if>
+	<if test="BIZ_SYS_PROD_C017 !=null and BIZ_SYS_PROD_C017 !=''">and BIZ_SYS_PROD_C017 like CONCAT('%',#{BIZ_SYS_PROD_C017},'%')</if>
+	<if test="BIZ_SYS_PROD_C018 !=null and BIZ_SYS_PROD_C018 !=''">and BIZ_SYS_PROD_C018 like CONCAT('%',#{BIZ_SYS_PROD_C018},'%')</if>
+	<if test="BIZ_SYS_PROD_C019 !=null and BIZ_SYS_PROD_C019 !=''">and BIZ_SYS_PROD_C019 like CONCAT('%',#{BIZ_SYS_PROD_C019},'%')</if>
+	<if test="BIZ_SYS_PROD_C020 !=null and BIZ_SYS_PROD_C020 !=''">and BIZ_SYS_PROD_C020 like CONCAT('%',#{BIZ_SYS_PROD_C020},'%')</if>
+	<if test="BIZ_SYS_PROD_C021 !=null and BIZ_SYS_PROD_C021 !=''">and BIZ_SYS_PROD_C021 like CONCAT('%',#{BIZ_SYS_PROD_C021},'%')</if>
+	<if test="BIZ_SYS_PROD_C022 !=null and BIZ_SYS_PROD_C022 !=''">and BIZ_SYS_PROD_C022 like CONCAT('%',#{BIZ_SYS_PROD_C022},'%')</if>
+	<if test="BIZ_SYS_PROD_C023 !=null and BIZ_SYS_PROD_C023 !=''">and BIZ_SYS_PROD_C023 like CONCAT('%',#{BIZ_SYS_PROD_C023},'%')</if>
+</sql>
+
+<sql id="selectWhereIfPage">
+	<if test="pd.PARAM_ID !=null and pd.PARAM_ID !=''">and PARAM_ID = #{pd.PARAM_ID}</if>
+	<if test="pd.BIZ_SYS_PROD_C001 !=null and pd.BIZ_SYS_PROD_C001 !=''">and BIZ_SYS_PROD_C001 = #{pd.BIZ_SYS_PROD_C001}</if>
+	<if test="pd.BIZ_SYS_PROD_C002 !=null and pd.BIZ_SYS_PROD_C002 !=''">and BIZ_SYS_PROD_C002 = #{pd.BIZ_SYS_PROD_C002}</if>
+	<if test="pd.BIZ_SYS_PROD_C003 !=null and pd.BIZ_SYS_PROD_C003 !=''">and BIZ_SYS_PROD_C003 = #{pd.BIZ_SYS_PROD_C003}</if>
+	<if test="pd.BIZ_SYS_PROD_C004 !=null and pd.BIZ_SYS_PROD_C004 !=''">and BIZ_SYS_PROD_C004 = #{pd.BIZ_SYS_PROD_C004}</if>
+	<if test="pd.BIZ_SYS_PROD_C005 !=null and pd.BIZ_SYS_PROD_C005 !=''">and BIZ_SYS_PROD_C005 = #{pd.BIZ_SYS_PROD_C005}</if>
+	<if test="pd.BIZ_SYS_PROD_C006 !=null and pd.BIZ_SYS_PROD_C006 !=''">and BIZ_SYS_PROD_C006 = #{pd.BIZ_SYS_PROD_C006}</if>
+	<if test="pd.BIZ_SYS_PROD_C007 !=null and pd.BIZ_SYS_PROD_C007 !=''">and BIZ_SYS_PROD_C007 = #{pd.BIZ_SYS_PROD_C007}</if>
+	<if test="pd.BIZ_SYS_PROD_C008 !=null and pd.BIZ_SYS_PROD_C008 !=''">and BIZ_SYS_PROD_C008 = #{pd.BIZ_SYS_PROD_C008}</if>
+	<if test="pd.BIZ_SYS_PROD_C009 !=null and pd.BIZ_SYS_PROD_C009 !=''">and BIZ_SYS_PROD_C009 = #{pd.BIZ_SYS_PROD_C009}</if>
+	<if test="pd.BIZ_SYS_PROD_C010 !=null and pd.BIZ_SYS_PROD_C010 !=''">and BIZ_SYS_PROD_C010 = #{pd.BIZ_SYS_PROD_C010}</if>
+	<if test="pd.BIZ_SYS_PROD_C011 !=null and pd.BIZ_SYS_PROD_C011 !=''">and BIZ_SYS_PROD_C011 = #{pd.BIZ_SYS_PROD_C011}</if>
+	<if test="pd.BIZ_SYS_PROD_C012 !=null and pd.BIZ_SYS_PROD_C012 !=''">and BIZ_SYS_PROD_C012 = #{pd.BIZ_SYS_PROD_C012}</if>
+	<if test="pd.BIZ_SYS_PROD_C013 !=null and pd.BIZ_SYS_PROD_C013 !=''">and BIZ_SYS_PROD_C013 = #{pd.BIZ_SYS_PROD_C013}</if>
+	<if test="pd.BIZ_SYS_PROD_C014 !=null and pd.BIZ_SYS_PROD_C014 !=''">and BIZ_SYS_PROD_C014 = #{pd.BIZ_SYS_PROD_C014}</if>
+	<if test="pd.BIZ_SYS_PROD_C015 !=null and pd.BIZ_SYS_PROD_C015 !=''">and BIZ_SYS_PROD_C015 = #{pd.BIZ_SYS_PROD_C015}</if>
+	<if test="pd.BIZ_SYS_PROD_C016 !=null and pd.BIZ_SYS_PROD_C016 !=''">and BIZ_SYS_PROD_C016 = #{pd.BIZ_SYS_PROD_C016}</if>
+	<if test="pd.BIZ_SYS_PROD_C017 !=null and pd.BIZ_SYS_PROD_C017 !=''">and BIZ_SYS_PROD_C017 = #{pd.BIZ_SYS_PROD_C017}</if>
+	<if test="pd.BIZ_SYS_PROD_C018 !=null and pd.BIZ_SYS_PROD_C018 !=''">and BIZ_SYS_PROD_C018 = #{pd.BIZ_SYS_PROD_C018}</if>
+	<if test="pd.BIZ_SYS_PROD_C019 !=null and pd.BIZ_SYS_PROD_C019 !=''">and BIZ_SYS_PROD_C019 = #{pd.BIZ_SYS_PROD_C019}</if>
+	<if test="pd.BIZ_SYS_PROD_C020 !=null and pd.BIZ_SYS_PROD_C020 !=''">and BIZ_SYS_PROD_C020 = #{pd.BIZ_SYS_PROD_C020}</if>
+	<if test="pd.BIZ_SYS_PROD_C021 !=null and pd.BIZ_SYS_PROD_C021 !=''">and BIZ_SYS_PROD_C021 = #{pd.BIZ_SYS_PROD_C021}</if>
+	<if test="pd.BIZ_SYS_PROD_C022 !=null and pd.BIZ_SYS_PROD_C022 !=''">and BIZ_SYS_PROD_C022 = #{pd.BIZ_SYS_PROD_C022}</if>
+	<if test="pd.BIZ_SYS_PROD_C023 !=null and pd.BIZ_SYS_PROD_C023 !=''">and BIZ_SYS_PROD_C023 = #{pd.BIZ_SYS_PROD_C023}</if>
+</sql>
+
+<sql id="updateSetAll">
+	PARAM_ID = #{PARAM_ID},
+	BIZ_SYS_PROD_C001 = #{BIZ_SYS_PROD_C001},
+	BIZ_SYS_PROD_C002 = #{BIZ_SYS_PROD_C002},
+	BIZ_SYS_PROD_C003 = #{BIZ_SYS_PROD_C003},
+	BIZ_SYS_PROD_C004 = #{BIZ_SYS_PROD_C004},
+	BIZ_SYS_PROD_C005 = #{BIZ_SYS_PROD_C005},
+	BIZ_SYS_PROD_C006 = #{BIZ_SYS_PROD_C006},
+	BIZ_SYS_PROD_C007 = #{BIZ_SYS_PROD_C007},
+	BIZ_SYS_PROD_C008 = #{BIZ_SYS_PROD_C008},
+	BIZ_SYS_PROD_C009 = #{BIZ_SYS_PROD_C009},
+	BIZ_SYS_PROD_C010 = #{BIZ_SYS_PROD_C010},
+	BIZ_SYS_PROD_C011 = #{BIZ_SYS_PROD_C011},
+	BIZ_SYS_PROD_C012 = #{BIZ_SYS_PROD_C012},
+	BIZ_SYS_PROD_C013 = #{BIZ_SYS_PROD_C013},
+	BIZ_SYS_PROD_C014 = #{BIZ_SYS_PROD_C014},
+	BIZ_SYS_PROD_C015 = #{BIZ_SYS_PROD_C015},
+	BIZ_SYS_PROD_C016 = #{BIZ_SYS_PROD_C016},
+	BIZ_SYS_PROD_C017 = #{BIZ_SYS_PROD_C017},
+	BIZ_SYS_PROD_C018 = #{BIZ_SYS_PROD_C018},
+	BIZ_SYS_PROD_C019 = #{BIZ_SYS_PROD_C019},
+	BIZ_SYS_PROD_C020 = #{BIZ_SYS_PROD_C020},
+	BIZ_SYS_PROD_C021 = #{BIZ_SYS_PROD_C021},
+	BIZ_SYS_PROD_C022 = #{BIZ_SYS_PROD_C022},
+	BIZ_SYS_PROD_C023 = #{BIZ_SYS_PROD_C023}
+</sql>
+
+<sql id="updateSetIf">
+	<if test="PARAM_ID !=null and PARAM_ID !=''">PARAM_ID = #{PARAM_ID},</if>
+	<if test="BIZ_SYS_PROD_C001 !=null and BIZ_SYS_PROD_C001 !=''">BIZ_SYS_PROD_C001 = #{BIZ_SYS_PROD_C001},</if>
+	<if test="BIZ_SYS_PROD_C002 !=null and BIZ_SYS_PROD_C002 !=''">BIZ_SYS_PROD_C002 = #{BIZ_SYS_PROD_C002},</if>
+	<if test="BIZ_SYS_PROD_C003 !=null and BIZ_SYS_PROD_C003 !=''">BIZ_SYS_PROD_C003 = #{BIZ_SYS_PROD_C003},</if>
+	<if test="BIZ_SYS_PROD_C004 !=null and BIZ_SYS_PROD_C004 !=''">BIZ_SYS_PROD_C004 = #{BIZ_SYS_PROD_C004},</if>
+	<if test="BIZ_SYS_PROD_C005 !=null and BIZ_SYS_PROD_C005 !=''">BIZ_SYS_PROD_C005 = #{BIZ_SYS_PROD_C005},</if>
+	<if test="BIZ_SYS_PROD_C006 !=null and BIZ_SYS_PROD_C006 !=''">BIZ_SYS_PROD_C006 = #{BIZ_SYS_PROD_C006},</if>
+	<if test="BIZ_SYS_PROD_C007 !=null and BIZ_SYS_PROD_C007 !=''">BIZ_SYS_PROD_C007 = #{BIZ_SYS_PROD_C007},</if>
+	<if test="BIZ_SYS_PROD_C008 !=null and BIZ_SYS_PROD_C008 !=''">BIZ_SYS_PROD_C008 = #{BIZ_SYS_PROD_C008},</if>
+	<if test="BIZ_SYS_PROD_C009 !=null and BIZ_SYS_PROD_C009 !=''">BIZ_SYS_PROD_C009 = #{BIZ_SYS_PROD_C009},</if>
+	<if test="BIZ_SYS_PROD_C010 !=null and BIZ_SYS_PROD_C010 !=''">BIZ_SYS_PROD_C010 = #{BIZ_SYS_PROD_C010},</if>
+	<if test="BIZ_SYS_PROD_C011 !=null and BIZ_SYS_PROD_C011 !=''">BIZ_SYS_PROD_C011 = #{BIZ_SYS_PROD_C011},</if>
+	<if test="BIZ_SYS_PROD_C012 !=null and BIZ_SYS_PROD_C012 !=''">BIZ_SYS_PROD_C012 = #{BIZ_SYS_PROD_C012},</if>
+	<if test="BIZ_SYS_PROD_C013 !=null and BIZ_SYS_PROD_C013 !=''">BIZ_SYS_PROD_C013 = #{BIZ_SYS_PROD_C013},</if>
+	<if test="BIZ_SYS_PROD_C014 !=null and BIZ_SYS_PROD_C014 !=''">BIZ_SYS_PROD_C014 = #{BIZ_SYS_PROD_C014},</if>
+	<if test="BIZ_SYS_PROD_C015 !=null and BIZ_SYS_PROD_C015 !=''">BIZ_SYS_PROD_C015 = #{BIZ_SYS_PROD_C015},</if>
+	<if test="BIZ_SYS_PROD_C016 !=null and BIZ_SYS_PROD_C016 !=''">BIZ_SYS_PROD_C016 = #{BIZ_SYS_PROD_C016},</if>
+	<if test="BIZ_SYS_PROD_C017 !=null and BIZ_SYS_PROD_C017 !=''">BIZ_SYS_PROD_C017 = #{BIZ_SYS_PROD_C017},</if>
+	<if test="BIZ_SYS_PROD_C018 !=null and BIZ_SYS_PROD_C018 !=''">BIZ_SYS_PROD_C018 = #{BIZ_SYS_PROD_C018},</if>
+	<if test="BIZ_SYS_PROD_C019 !=null and BIZ_SYS_PROD_C019 !=''">BIZ_SYS_PROD_C019 = #{BIZ_SYS_PROD_C019},</if>
+	<if test="BIZ_SYS_PROD_C020 !=null and BIZ_SYS_PROD_C020 !=''">BIZ_SYS_PROD_C020 = #{BIZ_SYS_PROD_C020},</if>
+	<if test="BIZ_SYS_PROD_C021 !=null and BIZ_SYS_PROD_C021 !=''">BIZ_SYS_PROD_C021 = #{BIZ_SYS_PROD_C021},</if>
+	<if test="BIZ_SYS_PROD_C022 !=null and BIZ_SYS_PROD_C022 !=''">BIZ_SYS_PROD_C022 = #{BIZ_SYS_PROD_C022},</if>
+	<if test="BIZ_SYS_PROD_C023 !=null and BIZ_SYS_PROD_C023 !=''">BIZ_SYS_PROD_C023 = #{BIZ_SYS_PROD_C023}</if>
+</sql>
+
+<sql id="updateSetIfNull">
+	<if test="PARAM_ID !=null">PARAM_ID = #{PARAM_ID},</if>
+	<if test="BIZ_SYS_PROD_C001 !=null">BIZ_SYS_PROD_C001 = #{BIZ_SYS_PROD_C001},</if>
+	<if test="BIZ_SYS_PROD_C002 !=null">BIZ_SYS_PROD_C002 = #{BIZ_SYS_PROD_C002},</if>
+	<if test="BIZ_SYS_PROD_C003 !=null">BIZ_SYS_PROD_C003 = #{BIZ_SYS_PROD_C003},</if>
+	<if test="BIZ_SYS_PROD_C004 !=null">BIZ_SYS_PROD_C004 = #{BIZ_SYS_PROD_C004},</if>
+	<if test="BIZ_SYS_PROD_C005 !=null">BIZ_SYS_PROD_C005 = #{BIZ_SYS_PROD_C005},</if>
+	<if test="BIZ_SYS_PROD_C006 !=null">BIZ_SYS_PROD_C006 = #{BIZ_SYS_PROD_C006},</if>
+	<if test="BIZ_SYS_PROD_C007 !=null">BIZ_SYS_PROD_C007 = #{BIZ_SYS_PROD_C007},</if>
+	<if test="BIZ_SYS_PROD_C008 !=null">BIZ_SYS_PROD_C008 = #{BIZ_SYS_PROD_C008},</if>
+	<if test="BIZ_SYS_PROD_C009 !=null">BIZ_SYS_PROD_C009 = #{BIZ_SYS_PROD_C009},</if>
+	<if test="BIZ_SYS_PROD_C010 !=null">BIZ_SYS_PROD_C010 = #{BIZ_SYS_PROD_C010},</if>
+	<if test="BIZ_SYS_PROD_C011 !=null">BIZ_SYS_PROD_C011 = #{BIZ_SYS_PROD_C011},</if>
+	<if test="BIZ_SYS_PROD_C012 !=null">BIZ_SYS_PROD_C012 = #{BIZ_SYS_PROD_C012},</if>
+	<if test="BIZ_SYS_PROD_C013 !=null">BIZ_SYS_PROD_C013 = #{BIZ_SYS_PROD_C013},</if>
+	<if test="BIZ_SYS_PROD_C014 !=null">BIZ_SYS_PROD_C014 = #{BIZ_SYS_PROD_C014},</if>
+	<if test="BIZ_SYS_PROD_C015 !=null">BIZ_SYS_PROD_C015 = #{BIZ_SYS_PROD_C015},</if>
+	<if test="BIZ_SYS_PROD_C016 !=null">BIZ_SYS_PROD_C016 = #{BIZ_SYS_PROD_C016},</if>
+	<if test="BIZ_SYS_PROD_C017 !=null">BIZ_SYS_PROD_C017 = #{BIZ_SYS_PROD_C017},</if>
+	<if test="BIZ_SYS_PROD_C018 !=null">BIZ_SYS_PROD_C018 = #{BIZ_SYS_PROD_C018},</if>
+	<if test="BIZ_SYS_PROD_C019 !=null">BIZ_SYS_PROD_C019 = #{BIZ_SYS_PROD_C019},</if>
+	<if test="BIZ_SYS_PROD_C020 !=null">BIZ_SYS_PROD_C020 = #{BIZ_SYS_PROD_C020},</if>
+	<if test="BIZ_SYS_PROD_C021 !=null">BIZ_SYS_PROD_C021 = #{BIZ_SYS_PROD_C021},</if>
+	<if test="BIZ_SYS_PROD_C022 !=null">BIZ_SYS_PROD_C022 = #{BIZ_SYS_PROD_C022},</if>
+	<if test="BIZ_SYS_PROD_C023 !=null">BIZ_SYS_PROD_C023 = #{BIZ_SYS_PROD_C023}</if>
+</sql>
+
+<sql id="updateEdit">
+	PARAM_ID = #{PARAM_ID},
+	BIZ_SYS_PROD_C001 = #{BIZ_SYS_PROD_C001},
+	BIZ_SYS_PROD_C002 = #{BIZ_SYS_PROD_C002},
+	BIZ_SYS_PROD_C003 = #{BIZ_SYS_PROD_C003},
+	BIZ_SYS_PROD_C004 = #{BIZ_SYS_PROD_C004},
+	BIZ_SYS_PROD_C005 = #{BIZ_SYS_PROD_C005},
+	BIZ_SYS_PROD_C006 = #{BIZ_SYS_PROD_C006},
+	BIZ_SYS_PROD_C007 = #{BIZ_SYS_PROD_C007},
+	BIZ_SYS_PROD_C008 = #{BIZ_SYS_PROD_C008},
+	BIZ_SYS_PROD_C009 = #{BIZ_SYS_PROD_C009},
+	BIZ_SYS_PROD_C010 = #{BIZ_SYS_PROD_C010},
+	BIZ_SYS_PROD_C011 = #{BIZ_SYS_PROD_C011},
+	BIZ_SYS_PROD_C012 = #{BIZ_SYS_PROD_C012},
+	BIZ_SYS_PROD_C013 = #{BIZ_SYS_PROD_C013},
+	BIZ_SYS_PROD_C014 = #{BIZ_SYS_PROD_C014},
+	BIZ_SYS_PROD_C015 = #{BIZ_SYS_PROD_C015},
+	BIZ_SYS_PROD_C016 = #{BIZ_SYS_PROD_C016},
+	BIZ_SYS_PROD_C017 = #{BIZ_SYS_PROD_C017},
+	BIZ_SYS_PROD_C018 = #{BIZ_SYS_PROD_C018},
+	BIZ_SYS_PROD_C019 = #{BIZ_SYS_PROD_C019},
+	BIZ_SYS_PROD_C020 = #{BIZ_SYS_PROD_C020},
+	BIZ_SYS_PROD_C021 = #{BIZ_SYS_PROD_C021},
+	BIZ_SYS_PROD_C022 = #{BIZ_SYS_PROD_C022},
+	BIZ_SYS_PROD_C023 = #{BIZ_SYS_PROD_C023}
+</sql>	
+	
+<sql id="cmdIf">
+	<if test="cmd !=null">${cmd}</if>
+</sql>	
+	
+	<!-- 新增-->
+	<insert id="save" parameterType="pd">
+		insert into biz_sys_PARAM(
+			BIZ_SYS_PROD_C001,	
+			BIZ_SYS_PROD_C002,	
+			BIZ_SYS_PROD_C003,	
+			BIZ_SYS_PROD_C004,	
+			BIZ_SYS_PROD_C005,	
+			BIZ_SYS_PROD_C006,	
+			BIZ_SYS_PROD_C007,	
+			BIZ_SYS_PROD_C008,	
+			BIZ_SYS_PROD_C009,	
+			BIZ_SYS_PROD_C010,	
+			BIZ_SYS_PROD_C011,	
+			BIZ_SYS_PROD_C012,	
+			BIZ_SYS_PROD_C013,	
+			BIZ_SYS_PROD_C014,	
+			BIZ_SYS_PROD_C015,	
+			BIZ_SYS_PROD_C016,	
+			BIZ_SYS_PROD_C017,	
+			BIZ_SYS_PROD_C018,	
+			BIZ_SYS_PROD_C019,	
+			BIZ_SYS_PROD_C020,	
+			BIZ_SYS_PROD_C021,	
+			BIZ_SYS_PROD_C022,	
+			BIZ_SYS_PROD_C023,	
+			PARAM_ID
+		) values (
+			#{BIZ_SYS_PROD_C001},	
+			#{BIZ_SYS_PROD_C002},	
+			#{BIZ_SYS_PROD_C003},	
+			#{BIZ_SYS_PROD_C004},	
+			#{BIZ_SYS_PROD_C005},	
+			#{BIZ_SYS_PROD_C006},	
+			#{BIZ_SYS_PROD_C007},	
+			#{BIZ_SYS_PROD_C007},	
+			#{BIZ_SYS_PROD_C009},	
+			#{BIZ_SYS_PROD_C010},	
+			#{BIZ_SYS_PROD_C011},	
+			#{BIZ_SYS_PROD_C012},	
+			#{BIZ_SYS_PROD_C013},	
+			#{BIZ_SYS_PROD_C014},	
+			#{BIZ_SYS_PROD_C015},	
+			#{BIZ_SYS_PROD_C016},	
+			#{BIZ_SYS_PROD_C017},	
+			#{BIZ_SYS_PROD_C018},	
+			#{BIZ_SYS_PROD_C019},	
+			#{BIZ_SYS_PROD_C020},	
+			#{BIZ_SYS_PROD_C021},	
+			#{BIZ_SYS_PROD_C022},	
+			#{BIZ_SYS_PROD_C023},	
+			#{PARAM_ID}
+		)
+	</insert>
+	
+	
+	<!-- 删除-->
+	<delete id="delete" parameterType="pd">
+		delete from biz_sys_PARAM
+		where 
+			PARAM_ID = #{PARAM_ID}
+	</delete>
+	
+	
+	<!-- 修改 -->
+	<update id="edit" parameterType="pd">
+		update  biz_sys_PARAM
+			set 
+				BIZ_SYS_PROD_C001 = #{BIZ_SYS_PROD_C001},
+				BIZ_SYS_PROD_C002 = #{BIZ_SYS_PROD_C002},
+				BIZ_SYS_PROD_C003 = #{BIZ_SYS_PROD_C003},
+				BIZ_SYS_PROD_C004 = #{BIZ_SYS_PROD_C004},
+				BIZ_SYS_PROD_C005 = #{BIZ_SYS_PROD_C005},
+				BIZ_SYS_PROD_C006 = #{BIZ_SYS_PROD_C006},
+				BIZ_SYS_PROD_C007 = #{BIZ_SYS_PROD_C007},
+				BIZ_SYS_PROD_C008 = #{BIZ_SYS_PROD_C008},
+				BIZ_SYS_PROD_C009 = #{BIZ_SYS_PROD_C009},
+				BIZ_SYS_PROD_C010 = #{BIZ_SYS_PROD_C010},
+				BIZ_SYS_PROD_C011 = #{BIZ_SYS_PROD_C011},
+				BIZ_SYS_PROD_C012 = #{BIZ_SYS_PROD_C012},
+				BIZ_SYS_PROD_C013 = #{BIZ_SYS_PROD_C013},
+				BIZ_SYS_PROD_C014 = #{BIZ_SYS_PROD_C014},
+				BIZ_SYS_PROD_C015 = #{BIZ_SYS_PROD_C015},
+				BIZ_SYS_PROD_C016 = #{BIZ_SYS_PROD_C016},
+				BIZ_SYS_PROD_C017 = #{BIZ_SYS_PROD_C017},
+				BIZ_SYS_PROD_C018 = #{BIZ_SYS_PROD_C018},
+				BIZ_SYS_PROD_C019 = #{BIZ_SYS_PROD_C019}
+			where 
+				PARAM_ID = #{PARAM_ID}
+	</update>
+	
+	
+	<!-- 通过ID获取数据 -->
+	<select id="findById" parameterType="pd" resultType="pd">
+		select 
+			BIZ_SYS_PROD_C001,	
+			BIZ_SYS_PROD_C002,	
+			BIZ_SYS_PROD_C003,	
+			BIZ_SYS_PROD_C004,	
+			BIZ_SYS_PROD_C005,	
+			BIZ_SYS_PROD_C006,	
+			BIZ_SYS_PROD_C007,	
+			BIZ_SYS_PROD_C008,	
+			BIZ_SYS_PROD_C009,	
+			BIZ_SYS_PROD_C010,	
+			BIZ_SYS_PROD_C011,	
+			BIZ_SYS_PROD_C012,	
+			BIZ_SYS_PROD_C013,	
+			BIZ_SYS_PROD_C014,	
+			BIZ_SYS_PROD_C015,	
+			BIZ_SYS_PROD_C016,	
+			BIZ_SYS_PROD_C017,	
+			BIZ_SYS_PROD_C018,	
+			BIZ_SYS_PROD_C019,	
+			BIZ_SYS_PROD_C020,	
+			BIZ_SYS_PROD_C021,	
+			BIZ_SYS_PROD_C022,	
+			BIZ_SYS_PROD_C023,	
+			PARAM_ID
+		from 
+			biz_sys_PARAM
+		where 
+			PARAM_ID = #{PARAM_ID}
+	</select>
+	
+	
+	<!-- 列表 -->
+	<select id="datalistPage" parameterType="page" resultType="pd">
+		select * from biz_sys_PARAM
+		<where>
+			<if test="pd.lastLoginStart!=null and pd.lastLoginStart!=''">
+				and BIZ_SYS_PROD_C019 &gt;= #{pd.lastLoginStart} 
+			</if>
+			<if test="pd.lastLoginEnd!=null and pd.lastLoginEnd!=''">
+				and BIZ_SYS_PROD_C019 &lt; #{pd.lastLoginEnd} 
+			</if>
+			<if test="pd.BIZ_SYS_PROD_C018 !=null and pd.BIZ_SYS_PROD_C018 !=''">
+				and BIZ_SYS_PROD_C018 = #{pd.BIZ_SYS_PROD_C018} 
+			</if>
+			<if test="pd.field1 !=null and pd.field1 !=''">
+				 and ( BIZ_SYS_PROD_C002 like CONCAT('%',#{pd.field1},'%')
+				 or BIZ_SYS_PROD_C003 like CONCAT('%',#{pd.field1},'%')
+				 or BIZ_SYS_PROD_C004 like CONCAT('%',#{pd.field1},'%')
+				 or BIZ_SYS_PROD_C005 like CONCAT('%',#{pd.field1},'%')
+				 or BIZ_SYS_PROD_C006 like CONCAT('%',#{pd.field1},'%')
+				 or BIZ_SYS_PROD_C007 like CONCAT('%',#{pd.field1},'%'))
+			</if>
+		</where>
+		ORDER BY  BIZ_SYS_PROD_C006 ASC
+				
+	</select>
+	
+	<!-- 列表(全部) -->
+	<select id="listAll" parameterType="pd" resultType="pd">
+		select
+				a.BIZ_SYS_PROD_C001,	
+				a.BIZ_SYS_PROD_C002,	
+				a.BIZ_SYS_PROD_C003,	
+				a.BIZ_SYS_PROD_C004,	
+				a.BIZ_SYS_PROD_C005,	
+				a.BIZ_SYS_PROD_C006,	
+				a.BIZ_SYS_PROD_C007,	
+				a.BIZ_SYS_PROD_C008,	
+				a.BIZ_SYS_PROD_C009,	
+				a.BIZ_SYS_PROD_C010,	
+				a.BIZ_SYS_PROD_C011,	
+				a.BIZ_SYS_PROD_C012,	
+				a.BIZ_SYS_PROD_C013,	
+				a.BIZ_SYS_PROD_C014,	
+				a.BIZ_SYS_PROD_C015,	
+				a.BIZ_SYS_PROD_C016,	
+				a.BIZ_SYS_PROD_C017,	
+				a.BIZ_SYS_PROD_C018,	
+				a.BIZ_SYS_PROD_C019,	
+				a.BIZ_SYS_PROD_C020,	
+				a.BIZ_SYS_PROD_C021,	
+				a.BIZ_SYS_PROD_C022,	
+				a.BIZ_SYS_PROD_C023,	
+				a.PARAM_ID
+		from 
+				biz_sys_PARAM a
+	</select>
+	
+	<!-- 批量删除 -->
+	<delete id="deleteAll" parameterType="String">
+		delete from biz_sys_PARAM
+		where 
+			PARAM_ID in
+		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+                 #{item}
+		</foreach>
+	</delete>
+	
+	<!-- 列表(查非空(null,empty)属性值) -->
+	<select id="listIf" parameterType="pd" resultType="pd">
+		select * from biz_sys_PARAM
+		<where><include refid="selectWhereIf"/></where>
+		<include refid="cmdIf"/>
+	</select>
+	
+	
+		<!-- 查询所有的来源公司 -->
+	<select id="listGsType" parameterType="pd" resultType="pd">
+		select BIZ_SYS_PROD_C018 from biz_sys_param group by BIZ_SYS_PROD_C018 order by BIZ_SYS_PROD_C018
+		<include refid="cmdIf"/>
+	</select>
+	
+	
+</mapper>

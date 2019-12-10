@@ -1,0 +1,77 @@
+	/* 按钮样式 基本样式 */
+
+	.button-style {
+		display: inline-block;
+		vertical-align: middle;
+		outline: 0;
+	    border-radius: 3px;
+	    background-color: #1890ff;
+	    color: #FFF;
+	    padding: 5px 8px;
+	    cursor: pointer;
+		letter-spacing: 1.5px;
+	}	
+
+	.button-style:active {
+	    background-color: #0274dd;
+	}
+	.button-style:hover {
+		opacity: .8;
+		color: #FFF;
+		text-decoration: none;
+	}
+	.button-style:focus{
+		border: 0;
+	}
+	/* 危险按钮 */
+	.delte{
+		background-color: #F56C6C;
+	}
+	.delte:active{
+		background-color: #ff3131;
+	}
+		/* 图标 */
+		.open{
+			background-color: rgb(243, 169, 57);
+		}
+		.open:active{
+			background-color: rgb(211, 134, 18);
+		}
+			/* 图标 */
+			.youjian{
+				
+				background-color: #15bb7b;
+			}
+			.youjian:active{
+				background-color: #67C23A;
+			}
+	/* table样式 */
+	.table-style{width: 100%;background-color: #edf7fd;margin-bottom: 10px;}
+	.table-style thead{background-color: #e3f1fc;}
+	.table-style thead tr,.table-style tbody tr{height: 55px;padding:10px 0;}
+	.table-style tbody tr:hover{background-color: #d5ebf9;}
+	/* 滚动条 */
+	::-webkit-scrollbar-thumb {
+		background-color: #018ee8;
+		height: 50px;
+		outline-offset: -2px;
+		outline: #fff solid 2px;
+		-webkit-border-radius: 4px;
+		border: 2px solid #fff
+	}
+	
+	::-webkit-scrollbar-thumb:hover {
+		background-color: #fb4446;
+		height: 50px;
+		-webkit-border-radius: 4px
+	}
+	
+	::-webkit-scrollbar {
+		width: 8px;
+		height: 18px
+	}
+	
+	::-webkit-scrollbar-track-piece {
+		background-color: #fff;
+		-webkit-border-radius: 0
+	}

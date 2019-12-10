@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CompanyMapper">
+	
+	
+	<!-- 新增-->
+	<insert id="save" parameterType="pd">
+		insert into RISK_A_EXT_SYS_COMPANY(
+			RISK_A_EXT_SYS_CP_ID,	    
+			RISK_A_EXT_SYS_CP_NAME,	
+			RISK_A_EXT_SYS_CP_DEPID,	
+			RISK_A_EXT_SYS_CP_DEP,	
+			RISK_A_EXT_SYS_CP_PERSONID,	
+			RISK_A_EXT_SYS_CP_PERSON,	
+			RISK_A_EXT_SYS_CP_STATE,	
+			RISK_A_EXT_SYS_CP_P001,	
+			RISK_A_EXT_SYS_CP_P002,	
+			RISK_A_EXT_SYS_CP_P003,	
+			COMPANY_ID
+		) values (
+			#{RISK_A_EXT_SYS_CP_ID},	
+			#{RISK_A_EXT_SYS_CP_NAME},	
+			#{RISK_A_EXT_SYS_CP_DEPID},	
+			#{RISK_A_EXT_SYS_CP_DEP},	
+			#{RISK_A_EXT_SYS_CP_PERSONID},	
+			#{RISK_A_EXT_SYS_CP_PERSON},	
+			#{RISK_A_EXT_SYS_CP_STATE},	
+			#{RISK_A_EXT_SYS_CP_P001},	
+			#{RISK_A_EXT_SYS_CP_P002},	
+			#{RISK_A_EXT_SYS_CP_P003},	
+			#{COMPANY_ID}
+		)
+	</insert>
+	
+	<!-- 新增公司部门业务购买所有情况-->
+	<insert id="saveinfo" parameterType="pd">
+		insert into ext_biz_sys_seq_companyinfo(
+			sys_conpany_001,
+			sys_conpany_002
+		) values (
+			#{id},
+			#{postscript}
+		)
+	</insert>
+	
+	<!-- 查询-->
+	<select id="findcominfo" parameterType="pd" resultType="pd">
+		select 
+			sys_conpany_002
+		from 
+			ext_biz_sys_seq_companyinfo 
+			where sys_conpany_001=#{temp}
+	</select>
+	
+	
+	<!-- 删除-->
+	<delete id="delete" parameterType="pd">
+		delete from RISK_A_EXT_SYS_COMPANY
+		where 
+			COMPANY_ID = #{COMPANY_ID}
+	</delete>
+	
+	
+<!-- 按条件查询所有公司和部门 -->
+	<select id="findall" parameterType="pd" resultType="pd">
+		select 
+			RISK_A_EXT_SYS_CP_NAME,RISK_A_EXT_SYS_CP_DEP
+		from 
+			RISK_A_EXT_SYS_COMPANY 
+		<where>
+			 <if test="company!=null and company!=''">RISK_A_EXT_SYS_CP_NAME=#{company}</if>
+			 <if test="department!=null and department!=''">and RISK_A_EXT_SYS_CP_DEP=#{department}</if>
+	    </where>
+			order by RISK_A_EXT_SYS_CP_NAME
+	</select>
+	
+	<!-- 查询所有公司和部门 -->
+	<select id="findcdall" parameterType="pd" resultType="pd">
+		select 
+			RISK_A_EXT_SYS_CP_NAME,RISK_A_EXT_SYS_CP_DEP
+		from 
+			RISK_A_EXT_SYS_COMPANY 
+			order by RISK_A_EXT_SYS_CP_NAME
+	</select>
+	
+	<!-- 修改 -->
+	<update id="edit" parameterType="pd">
+		update  RISK_A_EXT_SYS_COMPANY
+			set 
+				RISK_A_EXT_SYS_CP_ID = #{RISK_A_EXT_SYS_CP_ID},
+				RISK_A_EXT_SYS_CP_NAME = #{RISK_A_EXT_SYS_CP_NAME},
+				RISK_A_EXT_SYS_CP_DEPID = #{RISK_A_EXT_SYS_CP_DEPID},
+				RISK_A_EXT_SYS_CP_DEP = #{RISK_A_EXT_SYS_CP_DEP},
+				RISK_A_EXT_SYS_CP_PERSONID = #{RISK_A_EXT_SYS_CP_PERSONID},
+				RISK_A_EXT_SYS_CP_PERSON = #{RISK_A_EXT_SYS_CP_PERSON},
+				RISK_A_EXT_SYS_CP_STATE = #{RISK_A_EXT_SYS_CP_STATE},
+			COMPANY_ID = COMPANY_ID
+			where 
+				COMPANY_ID = #{COMPANY_ID}
+	</update>
+		
+	<!-- 通过ID获取数据 -->
+	<select id="findById" parameterType="pd" resultType="pd">
+		select 
+			RISK_A_EXT_SYS_CP_ID,	
+			RISK_A_EXT_SYS_CP_NAME,	
+			RISK_A_EXT_SYS_CP_DEPID,	
+			RISK_A_EXT_SYS_CP_DEP,	
+			RISK_A_EXT_SYS_CP_PERSONID,	
+			RISK_A_EXT_SYS_CP_PERSON,	
+			RISK_A_EXT_SYS_CP_STATE,	
+			RISK_A_EXT_SYS_CP_P001,	
+			RISK_A_EXT_SYS_CP_P002,	
+			RISK_A_EXT_SYS_CP_P003,	
+			COMPANY_ID
+		from 
+			RISK_A_EXT_SYS_COMPANY
+		where 
+			COMPANY_ID = #{COMPANY_ID}
+	</select>
+	
+	<!--查询汉字名称  -->
+	<select id="findname" parameterType="pd" resultType="java.lang.String">
+		select 
+			BIZ_SYS_PROD_C006
+		from 
+			biz_sys_param
+		where 
+			BIZ_SYS_PROD_C008 = #{thing}
+	</select>
+	
+	
+	
+	<!-- 通过DEPID获取数据 -->
+	<select id="findByDEPID" parameterType="pd" resultType="pd">
+		select 
+			RISK_A_EXT_SYS_CP_ID,	
+			RISK_A_EXT_SYS_CP_NAME,	
+			RISK_A_EXT_SYS_CP_DEPID,	
+			RISK_A_EXT_SYS_CP_DEP	
+			
+		from 
+			RISK_A_EXT_SYS_COMPANY
+		where 
+			RISK_A_EXT_SYS_CP_DEPID = #{RISK_A_EXT_SYS_CP_DEPID} and RISK_A_EXT_SYS_CP_STATE ='0'
+	</select>
+	
+	
+	<!-- 列表 -->
+	<select id="datalistPage" parameterType="page" resultType="pd">
+		select
+				a.RISK_A_EXT_SYS_CP_ID,	
+				a.RISK_A_EXT_SYS_CP_NAME,	
+				a.RISK_A_EXT_SYS_CP_DEPID,	
+				a.RISK_A_EXT_SYS_CP_DEP,	
+				a.RISK_A_EXT_SYS_CP_PERSONID,	
+				a.RISK_A_EXT_SYS_CP_PERSON,	
+				a.RISK_A_EXT_SYS_CP_STATE,	
+				a.RISK_A_EXT_SYS_CP_P001,	
+				a.RISK_A_EXT_SYS_CP_P002,	
+				a.RISK_A_EXT_SYS_CP_P003,	
+				a.COMPANY_ID
+		from 
+				RISK_A_EXT_SYS_COMPANY a
+				where a.RISK_A_EXT_SYS_CP_STATE='0'
+				order by a.RISK_A_EXT_SYS_CP_ID 
+	</select>
+	
+	
+	<!-- 新增用户 客户公司下拉框 -->
+	<select id="companylistAll" parameterType="pd" resultType="pd">
+	select
+				a.RISK_A_EXT_SYS_CP_ID,	
+				a.RISK_A_EXT_SYS_CP_NAME,	
+				a.RISK_A_EXT_SYS_CP_DEPID,	
+				a.RISK_A_EXT_SYS_CP_DEP,	
+				a.RISK_A_EXT_SYS_CP_PERSONID,	
+				a.RISK_A_EXT_SYS_CP_PERSON,	
+				a.RISK_A_EXT_SYS_CP_STATE,	
+				a.RISK_A_EXT_SYS_CP_P001,	
+				a.RISK_A_EXT_SYS_CP_P002,	
+				a.RISK_A_EXT_SYS_CP_P003,	
+				a.COMPANY_ID
+		from 
+				RISK_A_EXT_SYS_COMPANY a
+				GROUP BY a.risk_a_ext_sys_cp_id;
+	
+	</select>
+	<!-- 新增客户  对应公司部门下拉框 -->
+	<select id="findListByCpIdlistAll" parameterType="pd" resultType="pd">
+	select
+				
+				a.RISK_A_EXT_SYS_CP_DEPID,	
+				a.RISK_A_EXT_SYS_CP_DEP
+		from 
+				RISK_A_EXT_SYS_COMPANY a
+				where a.RISK_A_EXT_SYS_CP_ID=#{cp_id} and  RISK_A_EXT_SYS_CP_STATE ='0'
+	
+	</select>
+	<!-- 列表(全部) -->
+	<select id="listAll" parameterType="pd" resultType="pd">
+		select
+				a.RISK_A_EXT_SYS_CP_ID,	
+				a.RISK_A_EXT_SYS_CP_NAME,	
+				a.RISK_A_EXT_SYS_CP_DEPID,	
+				a.RISK_A_EXT_SYS_CP_DEP,	
+				a.RISK_A_EXT_SYS_CP_PERSONID,	
+				a.RISK_A_EXT_SYS_CP_PERSON,	
+				a.RISK_A_EXT_SYS_CP_STATE,	
+				a.RISK_A_EXT_SYS_CP_P001,	
+				a.RISK_A_EXT_SYS_CP_P002,	
+				a.RISK_A_EXT_SYS_CP_P003,	
+				a.COMPANY_ID
+		from 
+				RISK_A_EXT_SYS_COMPANY a
+	</select>
+	<!-- 通过公司名称和部门名称查询业务购买情况 -->
+	<select id="findbycompany" parameterType="pd" resultType="pd">
+		select RISK_A_EXT_SYS_TYPEINFO,RISK_A_EXT_SYS_PARAM_ID,RISK_A_EXT_SYS_FINALPRICE 
+		from risk_a_ext_sys_accounting RIGHT JOIN
+		(select COMPANY_ID from risk_a_ext_sys_company where
+			RISK_A_EXT_SYS_CP_NAME = #{company} 
+			AND RISK_A_EXT_SYS_CP_DEP = #{department}
+		) a  on 
+		a.COMPANY_ID = risk_a_ext_sys_accounting.RISK_A_EXT_SYS_CLIENT 
+				order by RISK_A_EXT_SYS_UPDATED ;
+	</select>
+	<!-- 通过公司名称查询部门名称 -->
+	<select id="finddpbycompany" parameterType="pd" resultType="pd">
+	select RISK_A_EXT_SYS_CP_DEP from risk_a_ext_sys_company where
+			RISK_A_EXT_SYS_CP_NAME = #{company} 
+	</select>
+	
+
+
+	<!-- 批量删除 -->
+	<delete id="deleteAll" parameterType="String">
+		delete from RISK_A_EXT_SYS_COMPANY
+		where 
+			COMPANY_ID in
+		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+                 #{item}
+		</foreach>
+	</delete>
+	
+</mapper>
