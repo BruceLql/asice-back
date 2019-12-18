@@ -49,12 +49,12 @@
 			</div>
 		</div>
 		<div class="login_footer">
-			<!--<p class="name">北京XXXX信息科技有限公司&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;京ICP：京B2-20170028</p>-->
+			<a href="http://www.beian.miit.gov.cn" target="_blank" class="ali-report-link" data-spm-anchor-id="a3c00.7621333.7y9jhqsfz.111"><img data-src="//img.alicdn.com/tfs/TB1..50QpXXXXX7XpXXXXXXXXXX-40-40.png" class="ali-report-img" src="//img.alicdn.com/tfs/TB1..50QpXXXXX7XpXXXXXXXXXX-40-40.png"><span class="ali-report-link-text" data-spm-anchor-id="a3c00.7621333.7y9jhqsfz.i0.6ab0b8Vub8VuZm"> ICP证号：浙ICP备19050636号-1 </span></a>
 			<!--<p>联系电话：18588888888&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;010-2888888</p>-->
-			<%--<p>Copyright © 浙江XXX公司</p>--%>
+			<p>Copyright © www.liqilan.top </p>
 		</div>
 	</div>
-	
+
 <script>
 	var loading='<div class="loading"><div class="spinner"><div class="rect1"></div>&nbsp;<div class="rect2"></div>&nbsp;<div class="rect3"></div>&nbsp;<div class="rect4"></div>&nbsp;<div class="rect5"></div>&nbsp;</div></div>';
 	$('body').append(loading);
