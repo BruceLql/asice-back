@@ -1,1 +1,1 @@
-yes,mbfw,青亭科技大数据智能风控数据平台,mbfw,20,mbfw,1,mbfw,1
+yes,mbfw,asice业务系统,mbfw,20,mbfw,1,mbfw,1
