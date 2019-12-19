@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="InquiryBossMapper">
+	
+	
+	<!-- 新增-->
+	<insert id="save" parameterType="pd">
+		insert into INQUIRYBOSS(
+
+			INQUIRY_BOSS_COMPAN,	
+			INQUIRY_BOSS,	
+			INQUIRY_BOSS_TELEPHONE,	
+			INQUIRY_BOSS_QQ,	
+			INQUIRY_BOSS_WECHAT,
+			INQUIRY_BOSS_CREATETIME,
+			INQUIRY_BOSS_UPDATETIME,
+			STATUS,
+			USER_ID
+		) values (
+
+			#{INQUIRY_BOSS_COMPAN},	
+			#{INQUIRY_BOSS},	
+			#{INQUIRY_BOSS_TELEPHONE},	
+			#{INQUIRY_BOSS_QQ},	
+			#{INQUIRY_BOSS_WECHAT},
+			#{INQUIRY_BOSS_CREATETIME},
+			#{INQUIRY_BOSS_UPDATETIME},
+			#{STATUS},
+			#{USER_ID}
+		)
+	</insert>
+	
+	
+	<!-- 删除-->
+	<delete id="delete" parameterType="pd">
+		delete from INQUIRYBOSS
+		where 
+			INQUIRY_BOSS_ID = #{INQUIRY_BOSS_ID}
+	</delete>
+	
+	
+	<!-- 修改 -->
+	<update id="edit" parameterType="pd">
+		update  INQUIRYBOSS
+			set 
+				INQUIRY_BOSS_COMPAN = #{INQUIRY_BOSS_COMPAN},
+				INQUIRY_BOSS = #{INQUIRY_BOSS},
+				INQUIRY_BOSS_TELEPHONE = #{INQUIRY_BOSS_TELEPHONE},
+				INQUIRY_BOSS_QQ = #{INQUIRY_BOSS_QQ},
+				INQUIRY_BOSS_WECHAT = #{INQUIRY_BOSS_WECHAT}
+			where 
+				INQUIRY_BOSS_ID = #{INQUIRY_BOSS_ID}
+	</update>
+	
+	
+	<!-- 通过ID获取数据 -->
+	<select id="findById" parameterType="pd" resultType="pd">
+		select 
+			INQUIRY_BOSS_ID,	
+			INQUIRY_BOSS_COMPAN,	
+			INQUIRY_BOSS,	
+			INQUIRY_BOSS_TELEPHONE,	
+			INQUIRY_BOSS_QQ,	
+			INQUIRY_BOSS_WECHAT,	
+			INQUIRY_BOSS_CREATETIME,	
+			INQUIRY_BOSS_UPDATETIME,	
+			STATUS
+		from 
+			INQUIRYBOSS
+		where 
+			INQUIRY_BOSS_ID = #{INQUIRY_BOSS_ID}
+	</select>
+	
+	
+	<!-- 列表 -->
+	<select id="datalistPage" parameterType="page" resultType="pd">
+		select
+				a.INQUIRY_BOSS_ID,	
+				a.INQUIRY_BOSS_COMPAN,	
+				a.INQUIRY_BOSS,	
+				a.INQUIRY_BOSS_TELEPHONE,	
+				a.INQUIRY_BOSS_QQ,	
+				a.INQUIRY_BOSS_WECHAT,	
+				a.INQUIRY_BOSS_CREATETIME,	
+				a.INQUIRY_BOSS_UPDATETIME,	
+				a.STATUS
+		from 
+				INQUIRYBOSS a
+	</select>
+	
+	<!-- 列表(全部) -->
+	<select id="listAll" parameterType="pd" resultType="pd">
+		select
+				a.INQUIRY_BOSS_ID,	
+				a.INQUIRY_BOSS_COMPAN,	
+				a.INQUIRY_BOSS,	
+				a.INQUIRY_BOSS_TELEPHONE,	
+				a.INQUIRY_BOSS_QQ,	
+				a.INQUIRY_BOSS_WECHAT,	
+				a.INQUIRY_BOSS_CREATETIME,	
+				a.INQUIRY_BOSS_UPDATETIME,	
+				a.STATUS
+		from 
+				INQUIRYBOSS a
+	</select>
+	
+	<!-- 批量删除 -->
+	<delete id="deleteAll" parameterType="String">
+		delete from INQUIRYBOSS
+		where 
+			INQUIRY_BOSS_ID in
+		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+                 #{item}
+		</foreach>
+	</delete>
+	
+</mapper>
