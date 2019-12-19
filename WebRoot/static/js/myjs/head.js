@@ -59,7 +59,7 @@ $(function() {
 			//alert(data.list.length);
 			$.each(data.list, function(i, list) {
 				//登陆者资料
-				$("#user_info").html('<small>欢迎贵宾</small> ' + list.NAME + '');
+				$("#user_info").html('<small>Welcome</small> ' + list.NAME + '');
 				user = list.USERNAME;
 				USER_ID = list.USER_ID; //用户ID
 				hf(list.SKIN); //皮肤
