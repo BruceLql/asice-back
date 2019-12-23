@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ContactsMapper">
+
+
+    <!-- 新增-->
+    <insert id="save" parameterType="pd">
+		insert into CONTACTS(
+			CONTACTS_NAME,
+			CONTACTS_EMAIL,
+			CONTACTS_COMPANY,	
+			CONTACTS_MOBILEPHONE,	
+			CONTACTS_ADDRESS,	
+			USER_ID,
+			CONTACTS_NOTE,
+			STATUS,
+			CONTACTS_001,	
+			CONTACTS_002
+		) values (
+			#{CONTACTS_NAME},
+			#{CONTACTS_EMAIL},
+			#{CONTACTS_COMPANY},
+			#{CONTACTS_MOBILEPHONE},	
+			#{CONTACTS_ADDRESS},	
+			#{USER_ID},
+			#{CONTACTS_NOTE},	
+			#{STATUS},
+			#{CONTACTS_001},
+			#{CONTACTS_002}
+		)
+	</insert>
+
+
+    <!-- 删除-->
+    <delete id="delete" parameterType="pd">
+		update  CONTACTS
+			set STATUS = -1
+		where STATUS = 0 and
+			CONTACTS_ID = #{CONTACTS_ID}
+	</delete>
+
+
+    <!-- 修改 -->
+    <update id="edit" parameterType="pd">
+		update  CONTACTS
+			set 
+				CONTACTS_NAME = #{CONTACTS_NAME},
+				CONTACTS_EMAIL = #{CONTACTS_EMAIL},
+				CONTACTS_COMPANY = #{CONTACTS_COMPANY},
+				CONTACTS_MOBILEPHONE = #{CONTACTS_MOBILEPHONE},
+				CONTACTS_ADDRESS = #{CONTACTS_ADDRESS},
+				CONTACTS_NOTE = #{CONTACTS_NOTE}
+			where
+				STATUS = 0 and
+				CONTACTS_ID = #{CONTACTS_ID}
+	</update>
+
+
+    <!-- 通过ID获取数据 -->
+    <select id="findById" parameterType="pd" resultType="pd">
+		select 
+			CONTACTS_NAME,
+			CONTACTS_EMAIL,
+			CONTACTS_COMPANY,	
+			CONTACTS_MOBILEPHONE,	
+			CONTACTS_ADDRESS,	
+			USER_ID,	
+			CREATE_TIME,	
+			UPDATE_TIME,	
+			CONTACTS_NOTE,	
+			CONTACTS_001,	
+			CONTACTS_002,	
+			CONTACTS_ID
+		from 
+			CONTACTS
+		where
+			STATUS = 0 and
+			CONTACTS_ID = #{CONTACTS_ID}
+	</select>
+
+
+    <!-- 列表 -->
+    <select id="datalistPage" parameterType="page" resultType="pd">
+        select
+		a.CONTACTS_NAME,
+		a.CONTACTS_EMAIL,
+		CONCAT(LEFT(a.CONTACTS_EMAIL,3),'****',RIGHT(a.CONTACTS_EMAIL,9)) CONTACTS_EMAIL_,
+		a.CONTACTS_COMPANY,
+		a.CONTACTS_MOBILEPHONE,
+		CONCAT(LEFT(a.CONTACTS_MOBILEPHONE,3),'****',RIGHT(a.CONTACTS_MOBILEPHONE,4)) CONTACTS_MOBILEPHONE_,
+		a.CONTACTS_ADDRESS,
+		a.USER_ID,
+		a.CREATE_TIME,
+		a.UPDATE_TIME,
+		a.CONTACTS_NOTE,
+		a.CONTACTS_001,
+		a.CONTACTS_002,
+		a.CONTACTS_ID,
+		su.`NAME`,
+		su.USERNAME
+		from
+        CONTACTS a
+        left join sys_user su on su.USER_ID =a.USER_ID
+
+        <where>
+            a.STATUS = 0
+            <if test="pd.CREATE_TIMEStart !=null and pd.CREATE_TIMEStart !=''">and a.CREATE_TIME &gt;=
+                #{pd.CREATE_TIMEStart}
+            </if>
+            <if test="pd.CREATE_TIMEEnd !=null and pd.CREATE_TIMEEnd !=''">and a.CREATE_TIME &lt;=
+                #{pd.CREATE_TIMEEnd}
+            </if>
+            <if test="pd.searchKey !=null and pd.searchKey !=''">and (
+        		a.CONTACTS_NAME like CONCAT('%',replace(#{pd.searchKey},' ',''),'%')
+            	or a.CONTACTS_EMAIL like CONCAT('%',replace(#{pd.searchKey},' ',''),'%')
+            	or a.CONTACTS_COMPANY like CONCAT('%',replace(#{pd.searchKey},' ',''),'%')
+            	or a.CONTACTS_MOBILEPHONE like CONCAT('%',replace(#{pd.searchKey},' ',''),'%')
+             )
+            </if>
+        </where>
+        order by a.CREATE_TIME desc
+    </select>
+
+    <!-- 列表(全部) -->
+    <select id="listAll" parameterType="pd" resultType="pd">
+		select
+				a.CONTACTS_NAME,
+				a.CONTACTS_EMAIL,
+				a.CONTACTS_COMPANY,	
+				a.CONTACTS_MOBILEPHONE,	
+				a.CONTACTS_ADDRESS,	
+				a.USER_ID,	
+				a.CREATE_TIME,	
+				a.UPDATE_TIME,	
+				a.CONTACTS_NOTE,	
+				a.CONTACTS_001,	
+				a.CONTACTS_002,	
+				a.CONTACTS_ID
+		from
+				CONTACTS a
+		where
+				a.STATUS = 0
+		order by a.CREATE_TIME desc
+	</select>
+
+    <!-- 批量删除 -->
+    <delete id="deleteAll" parameterType="String">
+        update CONTACTS
+        set STATUS = -1
+        where
+        STATUS = 0 and
+        CONTACTS_ID in
+        <foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+
+</mapper>

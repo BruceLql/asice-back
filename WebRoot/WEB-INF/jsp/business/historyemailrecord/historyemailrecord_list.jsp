@@ -28,17 +28,17 @@
                         <tr>
                             <td>
 						<span class="input-icon">
-							<input autocomplete="off" id="nav-search-input" type="text" name="field1" value=""
+							<input autocomplete="off" id="nav-search-input" type="text" name="searchKey" value="${pd.searchKey}"
                                    placeholder="这里输入关键词"/>
 							<i id="nav-search-icon" class="icon-search"></i>
 						</span>
                             </td>
-                            <td><input class="span10 date-picker" name="lastLoginStart" id="lastLoginStart"
-                                       value="${pd.lastLoginStart}" type="text" data-date-format="yyyy-mm-dd"
-                                       readonly="readonly" style="width:88px;" placeholder="开始日期"/></td>
-                            <td><input class="span10 date-picker" name="lastLoginEnd" id="lastLoginEnd"
-                                       value="${pd.lastLoginEnd}" type="text" data-date-format="yyyy-mm-dd"
-                                       readonly="readonly" style="width:88px;" placeholder="结束日期"/></td>
+                            <td><input class="span10 date-picker" name="EMAIL_SENDTIMEStart" id="lastLoginStart"
+                                       value="${pd.EMAIL_SENDTIMEStart}" type="text" data-date-format="yyyy-mm-dd"
+                                       readonly="readonly" style="width:100px;" placeholder="开始日期"/></td>
+                            <td><input class="span10 date-picker" name="EMAIL_SENDTIMEEnd" id="lastLoginEnd"
+                                       value="${pd.EMAIL_SENDTIMEEnd}" type="text" data-date-format="yyyy-mm-dd"
+                                       readonly="readonly" style="width:100px;" placeholder="结束日期"/></td>
                             <td style="vertical-align:top;">
                                 <select class="chzn-select" name="field2" id="field2" data-placeholder="请选择"
                                         style="vertical-align:top;width: 120px;">
@@ -100,12 +100,12 @@
                                                         class="lbl"></span></label>
                                             </td>
                                             <td class='center' style="width: 30px;">${vs.index+1}</td>
-                                            <td>${var.SENDER_USERID}</td>
-                                            <td>${var.SENDER_EMAIL}</td>
-                                            <td>${var.RECIPIENT_EMAIL}</td>
-                                            <td>${var.EMAIL_TITLE}</td>
+                                            <td class='center' >${var.USERNAME}(${var.NAME})</td>
+                                            <td class='center'>${var.SENDER_EMAIL}</td>
+                                            <td class='center'>${var.RECIPIENT_EMAIL}</td>
+                                            <td class='center'>${var.EMAIL_TITLE}</td>
                                                 <%--										<td>${var.EMAIL_CONTENT}</td>--%>
-                                            <td>${var.EMAIL_SENDTIME}</td>
+                                            <td class='center'>${var.EMAIL_SENDTIME}</td>
                                                 <%--										<td>${var.EMAIL_SENDSTATE}</td>--%>
 <%--                                            <td>${var.CREATETIME}</td>--%>
                                                 <%--										<td>${var.STATUS}</td>--%>

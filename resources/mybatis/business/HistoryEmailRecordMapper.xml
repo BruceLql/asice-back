@@ -96,10 +96,27 @@
 				a.STATUS,	
 				a.HISTORY_001,	
 				a.HISTORY_002,	
-				a.HISTORYEMAILRECORD_ID
+				a.HISTORYEMAILRECORD_ID,
+				su.`NAME`,
+				su.USERNAME
 		from
 				HISTORYEMAILRECORD a
-		where  	a.STATUS = 0
+		left join sys_user su on su.USER_ID =a.SENDER_USERID
+		<where>
+			a.STATUS = 0
+			<if test="pd.EMAIL_SENDTIMEStart !=null and pd.EMAIL_SENDTIMEStart !=''">and a.EMAIL_SENDTIME &gt;=
+				#{pd.EMAIL_SENDTIMEStart}
+			</if>
+			<if test="pd.EMAIL_SENDTIMEEnd !=null and pd.EMAIL_SENDTIMEEnd !=''">and a.EMAIL_SENDTIME &lt;=
+				#{pd.EMAIL_SENDTIMEEnd}
+			</if>
+			<if test="pd.searchKey !=null and pd.searchKey !=''">and (
+				su.USERNAME like CONCAT('%',replace(#{pd.searchKey},' ',''),'%')
+				or su.NAME like CONCAT('%',replace(#{pd.searchKey},' ',''),'%')
+				or a.RECIPIENT_EMAIL like CONCAT('%',replace(#{pd.searchKey},' ',''),'%')
+				)
+			</if>
+		</where>
 		order by a.EMAIL_SENDTIME desc
 	</select>
 
