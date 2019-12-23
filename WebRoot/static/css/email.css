@@ -1,0 +1,31 @@
+.chzn-container {
+    font-size: 13px;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    zoom: 1
+}
+
+.chzn-container .chzn-drop {
+    background: #fff;
+    border: 1px solid #aaa;
+    border-top: 0;
+    position: absolute;
+    top: 29px;
+    left: 0;
+    -webkit-box-shadow: 0 4px 5px rgba(0, 0, 0, .15);
+    -moz-box-shadow: 0 4px 5px rgba(0, 0, 0, .15);
+    box-shadow: 0 4px 5px rgba(0, 0, 0, .15);
+    z-index: 1010
+}
+
+.spam {
+
+}
+
+.alert_tips_yellow {
+    background: #FFF1B4;
+}
+.txt_left {
+    text-align: left;
+}
