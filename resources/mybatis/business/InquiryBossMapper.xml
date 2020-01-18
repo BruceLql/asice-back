@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="InquiryBossMapper">
-	
-	
-	<!-- 新增-->
-	<insert id="save" parameterType="pd">
+
+
+    <!-- 新增-->
+    <insert id="save" parameterType="pd">
 		insert into INQUIRYBOSS(
 
 			INQUIRY_BOSS_COMPAN,	
@@ -29,18 +29,21 @@
 			#{USER_ID}
 		)
 	</insert>
-	
-	
-	<!-- 删除-->
-	<delete id="delete" parameterType="pd">
-		delete from INQUIRYBOSS
-		where 
+
+
+    <!-- 删除-->
+    <delete id="delete" parameterType="pd">
+		update  INQUIRYBOSS
+			set
+				STATUS = -1
+		where
+			STATUS = 0 and
 			INQUIRY_BOSS_ID = #{INQUIRY_BOSS_ID}
 	</delete>
-	
-	
-	<!-- 修改 -->
-	<update id="edit" parameterType="pd">
+
+
+    <!-- 修改 -->
+    <update id="edit" parameterType="pd">
 		update  INQUIRYBOSS
 			set 
 				INQUIRY_BOSS_COMPAN = #{INQUIRY_BOSS_COMPAN},
@@ -48,13 +51,14 @@
 				INQUIRY_BOSS_TELEPHONE = #{INQUIRY_BOSS_TELEPHONE},
 				INQUIRY_BOSS_QQ = #{INQUIRY_BOSS_QQ},
 				INQUIRY_BOSS_WECHAT = #{INQUIRY_BOSS_WECHAT}
-			where 
+			where
+				STATUS = 0 and
 				INQUIRY_BOSS_ID = #{INQUIRY_BOSS_ID}
 	</update>
-	
-	
-	<!-- 通过ID获取数据 -->
-	<select id="findById" parameterType="pd" resultType="pd">
+
+
+    <!-- 通过ID获取数据 -->
+    <select id="findById" parameterType="pd" resultType="pd">
 		select 
 			INQUIRY_BOSS_ID,	
 			INQUIRY_BOSS_COMPAN,	
@@ -67,13 +71,64 @@
 			STATUS
 		from 
 			INQUIRYBOSS
-		where 
+		where
+			STATUS = 0 and
 			INQUIRY_BOSS_ID = #{INQUIRY_BOSS_ID}
 	</select>
-	
-	
-	<!-- 列表 -->
-	<select id="datalistPage" parameterType="page" resultType="pd">
+
+
+    <!-- 列表 -->
+    <select id="datalistPage" parameterType="page" resultType="pd">
+        select
+        a.INQUIRY_BOSS_ID,
+        a.INQUIRY_BOSS_COMPAN,
+        a.INQUIRY_BOSS,
+        a.INQUIRY_BOSS_TELEPHONE,
+        a.INQUIRY_BOSS_QQ,
+        a.INQUIRY_BOSS_WECHAT,
+        a.INQUIRY_BOSS_CREATETIME,
+        a.INQUIRY_BOSS_UPDATETIME,
+        a.STATUS,
+        a.USER_ID,
+        su.NAME,
+        su.USERNAME
+        from
+        INQUIRYBOSS a
+        left join sys_user su on su.USER_ID =a.USER_ID
+
+        <where>
+            a.STATUS = 0
+            <if test="pd.USER_ID !=null and pd.USER_ID !=''">
+                and (
+                a.USER_ID =#{pd.USER_ID}
+                or su.NAME like CONCAT('%',replace(#{pd.USER_ID},' ',''),'%')
+                or su.USERNAME like CONCAT('%',replace(#{pd.USER_ID},' ',''),'%')
+                )
+            </if>
+            <if test="pd.INQUIRY_BOSS_CREATETIMEStart !=null and pd.CREATE_TIMEStart !=''">
+                and a.INQUIRY_BOSS_CREATETIME &gt;=
+                #{pd.INQUIRY_BOSS_CREATETIMEStart}
+            </if>
+            <if test="pd.INQUIRY_BOSS_CREATETIMEEnd !=null and pd.INQUIRY_BOSS_CREATETIMEEnd !=''">
+                and a.INQUIRY_BOSS_CREATETIME &lt;=
+                #{pd.INQUIRY_BOSS_CREATETIMEEnd}
+            </if>
+            <if test="pd.searchKey !=null and pd.searchKey !=''">and (
+                a.INQUIRY_BOSS like CONCAT('%',replace(#{pd.searchKey},' ',''),'%')
+                or a.INQUIRY_BOSS_COMPAN like CONCAT('%',replace(#{pd.searchKey},' ',''),'%')
+                or a.INQUIRY_BOSS_TELEPHONE like CONCAT('%',replace(#{pd.searchKey},' ',''),'%')
+                or a.INQUIRY_BOSS_QQ like CONCAT('%',replace(#{pd.searchKey},' ',''),'%')
+                or a.INQUIRY_BOSS_WECHAT like CONCAT('%',replace(#{pd.searchKey},' ',''),'%')
+                )
+            </if>
+        </where>
+        order by a.INQUIRY_BOSS_CREATETIME desc
+
+
+    </select>
+
+    <!-- 列表(全部) -->
+    <select id="listAll" parameterType="pd" resultType="pd">
 		select
 				a.INQUIRY_BOSS_ID,	
 				a.INQUIRY_BOSS_COMPAN,	
@@ -86,32 +141,23 @@
 				a.STATUS
 		from 
 				INQUIRYBOSS a
+
+		where  a.STATUS = 0
+
+
 	</select>
-	
-	<!-- 列表(全部) -->
-	<select id="listAll" parameterType="pd" resultType="pd">
-		select
-				a.INQUIRY_BOSS_ID,	
-				a.INQUIRY_BOSS_COMPAN,	
-				a.INQUIRY_BOSS,	
-				a.INQUIRY_BOSS_TELEPHONE,	
-				a.INQUIRY_BOSS_QQ,	
-				a.INQUIRY_BOSS_WECHAT,	
-				a.INQUIRY_BOSS_CREATETIME,	
-				a.INQUIRY_BOSS_UPDATETIME,	
-				a.STATUS
-		from 
-				INQUIRYBOSS a
-	</select>
-	
-	<!-- 批量删除 -->
-	<delete id="deleteAll" parameterType="String">
-		delete from INQUIRYBOSS
-		where 
-			INQUIRY_BOSS_ID in
-		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
-                 #{item}
-		</foreach>
-	</delete>
-	
+
+    <!-- 批量删除 -->
+    <delete id="deleteAll" parameterType="String">
+        update INQUIRYBOSS
+        set
+        STATUS = -1
+        where
+        status = 0 and
+        INQUIRY_BOSS_ID in
+        <foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+
 </mapper>
