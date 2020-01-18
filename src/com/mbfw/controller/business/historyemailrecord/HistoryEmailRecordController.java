@@ -13,6 +13,7 @@ import javax.annotation.Resource;
 
 import com.mbfw.service.system.appuser.AppuserService;
 import com.mbfw.service.system.user.UserService;
+import com.mbfw.util.mail.EmailConfigType;
 import com.mbfw.util.mail.SimpleMailSender;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
@@ -127,6 +128,14 @@ public class HistoryEmailRecordController extends BaseController {
         int zcount = 0; // 理论条数
 
         String strEMAIL = Tools.readTxtFile(Const.EMAIL); // 读取邮件配置
+        // todo 读取邮件配置跟随当前用户来确定
+        String user_id = pd.getUser().getUSER_ID();
+        System.out.println("============ 当前用户id:"+user_id +" =================");
+        // 读取邮箱配置信息  包含 账户 EMAIL、密码 PAW、配置类型 config 、Smtp类型  SMTP, 通信端口 PORT
+        String emailConfigType = EmailConfigType.SMTP_OFFICE365.toString();
+
+
+
 
         List<PageData> pdList = new ArrayList<PageData>();
         List<PageData> recordList = new ArrayList<PageData>(); // 邮件记录
@@ -134,84 +143,46 @@ public class HistoryEmailRecordController extends BaseController {
         String toEMAIL = pd.getString("EMAIL"); // 对方邮箱
         String TITLE = pd.getString("TITLE"); // 标题
         String CONTENT = pd.getString("CONTENT"); // 内容
-        String TYPE = pd.getString("TYPE"); // 类型
-        String isAll = pd.getString("isAll"); // 是否发送给全体成员 yes or no
+//        String TYPE = pd.getString("TYPE"); // 类型
+//        String isAll = pd.getString("isAll"); // 是否发送给全体成员 yes or no
 
-        String fmsg = pd.getString("fmsg"); // 判断是系统用户还是会员 "appuser"为会员用户
+//        String fmsg = pd.getString("fmsg"); // 判断是系统用户还是会员 "appuser"为会员用户
 
         if (null != strEMAIL && !"".equals(strEMAIL)) {
             String strEM[] = strEMAIL.split(",mbfw,");
             if (strEM.length == 4) {
-                if ("yes".endsWith(isAll)) {
-                    try {
-                        List<PageData> userList = new ArrayList<PageData>();
-
-                        userList = "appuser".equals(fmsg) ? appuserService.listAllUser(pd) : userService.listAllUser(pd);
-
-                        zcount = userList.size();
-                        try {
-                            for (int i = 0; i < userList.size(); i++) {
-                                if (Tools.checkEmail(userList.get(i).getString("EMAIL"))) { // 邮箱格式不对就跳过
-                                    // String SMTP, String PORT, String EMAIL, String PAW, String toEMAIL, String TITLE, String CONTENT, String TYPE
-                                    SimpleMailSender.sendEmail(strEM[0], strEM[1], strEM[2], strEM[3], userList.get(i).getString("EMAIL"), TITLE, CONTENT, TYPE);// 调用发送邮件函数
-                                    count++;
-                                    PageData pdEmail = new PageData();
+                toEMAIL = toEMAIL.replaceAll("；", ";");
+                toEMAIL = toEMAIL.replaceAll(" ", "");
+                String[] arrTITLE = toEMAIL.split(";");
+                zcount = arrTITLE.length;
+                try {
+                    for (int i = 0; i < arrTITLE.length; i++) {
+                        if (Tools.checkEmail(arrTITLE[i])) { // 邮箱格式不对就跳过
+                            // String SMTP, String PORT, String EMAIL, String PAW, String toEMAIL, String TITLE, String CONTENT
+                            SimpleMailSender.sendEmail(strEM[0], strEM[1], strEM[2], strEM[3], arrTITLE[i], TITLE, CONTENT, "2");// 调用发送邮件函数
+                            count++;
+                            PageData pdEmail = new PageData();
 //                                    pdEmail.put("HISTORYEMAILRECORD_ID", this.get32UUID());    //主键
-                                    pdEmail.put("SENDER_USERID", pd.getUser().getUSER_ID());    //发件人ID
-                                    pdEmail.put("SENDER_EMAIL", strEM[2]);    //发件人邮箱账户
-                                    pdEmail.put("RECIPIENT_EMAIL", toEMAIL);    //收件人邮箱账户
-                                    pdEmail.put("EMAIL_TITLE", TITLE);    //邮件标题
-                                    pdEmail.put("EMAIL_CONTENT", CONTENT);    //邮件正文
-                                    pdEmail.put("EMAIL_SENDTIME", Tools.date2Str(new Date()));    //邮件发送时间
-                                    pdEmail.put("EMAIL_SENDSTATE", "1");    //邮件发送状态(0：发送失败；1:发送成功 2：其他状态)
-                                    pdEmail.put("CREATETIME", Tools.date2Str(new Date()));    //创建时间
-                                    pdEmail.put("STATUS", "0");    //状态(0:正常 -1：失效)
-                                    recordList.add(pdEmail);
-                                } else {
-                                    continue;
-                                }
-                            }
-                            msg = "ok";
-                        } catch (Exception e) {
-                            msg = "error";
+                            pdEmail.put("SENDER_USERID", pd.getUser().getUSER_ID());    //发件人ID
+                            pdEmail.put("SENDER_EMAIL", strEM[2]);    //发件人邮箱账户
+                            pdEmail.put("RECIPIENT_EMAIL", arrTITLE[i]);    //收件人邮箱账户
+                            pdEmail.put("EMAIL_TITLE", TITLE);    //邮件标题
+                            pdEmail.put("EMAIL_CONTENT", CONTENT);    //邮件正文
+                            pdEmail.put("EMAIL_SENDTIME", Tools.date2Str(new Date()));    //邮件发送时间
+                            pdEmail.put("EMAIL_SENDSTATE", "1");    //邮件发送状态(0：发送失败；1:发送成功 2：其他状态)
+                            pdEmail.put("CREATETIME", Tools.date2Str(new Date()));    //创建时间
+                            pdEmail.put("STATUS", "0");    //状态(0:正常 -1：失效)
+                            recordList.add(pdEmail);
+                        } else {
+                            continue;
                         }
-
-                    } catch (Exception e) {
-                        msg = "error";
                     }
-                } else {
-                    toEMAIL = toEMAIL.replaceAll("；", ";");
-                    toEMAIL = toEMAIL.replaceAll(" ", "");
-                    String[] arrTITLE = toEMAIL.split(";");
-                    zcount = arrTITLE.length;
-                    try {
-                        for (int i = 0; i < arrTITLE.length; i++) {
-                            if (Tools.checkEmail(arrTITLE[i])) { // 邮箱格式不对就跳过
-                                // String SMTP, String PORT, String EMAIL, String PAW, String toEMAIL, String TITLE, String CONTENT, String TYPE
-                                SimpleMailSender.sendEmail(strEM[0], strEM[1], strEM[2], strEM[3], arrTITLE[i], TITLE, CONTENT, TYPE);// 调用发送邮件函数
-                                count++;
-                                PageData pdEmail = new PageData();
-//                                    pdEmail.put("HISTORYEMAILRECORD_ID", this.get32UUID());    //主键
-                                pdEmail.put("SENDER_USERID", pd.getUser().getUSER_ID());    //发件人ID
-                                pdEmail.put("SENDER_EMAIL", strEM[2]);    //发件人邮箱账户
-                                pdEmail.put("RECIPIENT_EMAIL", arrTITLE[i]);    //收件人邮箱账户
-                                pdEmail.put("EMAIL_TITLE", TITLE);    //邮件标题
-                                pdEmail.put("EMAIL_CONTENT", CONTENT);    //邮件正文
-                                pdEmail.put("EMAIL_SENDTIME", Tools.date2Str(new Date()));    //邮件发送时间
-                                pdEmail.put("EMAIL_SENDSTATE", "1");    //邮件发送状态(0：发送失败；1:发送成功 2：其他状态)
-                                pdEmail.put("CREATETIME", Tools.date2Str(new Date()));    //创建时间
-                                pdEmail.put("STATUS", "0");    //状态(0:正常 -1：失效)
-                                recordList.add(pdEmail);
-                            } else {
-                                continue;
-                            }
-                        }
-                        msg = "ok";
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        msg = "error";
-                    }
+                    msg = "ok";
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    msg = "error";
                 }
+
                 try{
                     if(recordList != null && recordList.size() >0 ){
                         // 批量保存邮件记录

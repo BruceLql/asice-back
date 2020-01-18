@@ -71,3 +71,34 @@
 
 
 
+- 邮箱配置信息表
+
+名称 | 字段 |备注
+    ---|--- |--- 
+ |   邮箱配置表主键      |   companyEmail_id           |                      |
+  |   邮箱账户      |   companyEmail_account           |                      |
+   |   邮箱密码      |   companyEmail_pwd           |      或者是邮箱授权码                |
+    |   邮箱配置类型      |   companyEmail_config_type           |  包含端口 和 host 配置，但是优先级低                    |
+     |   邮箱配置端口      |   companyEmail_port           |                      |
+     |   邮箱配置Host      |   companyEmail_host           |                      |
+     |   邮箱配置Host      |   companyEmail_host           |                      |
+     |   创建时间      |   create_time           |                      |
+     |   更新时间      |   update_time           |                      |
+     |   状态            |   status             |  0:正常; -1:数据已失效 |
+     |   备用1      |   companyEmail_bf1           |                      |
+     |   备用2      |   companyEmail_bf2           |                      |  
+      
+                
+    
+ - 邮箱账户分配记录表
+ 
+ 名称 | 字段 |备注
+     ---|--- |--- 
+     |   邮箱分配记录表主键      |   distributeEmail_id           |                      |
+     |   用户id      |   user_id           |     关联用户表主键                 |
+     |   邮箱账户id      |   companyEmail_id           |     关联邮箱配置表主键                 |
+     |   创建时间      |   create_time           |                      |
+     |   更新时间      |   update_time           |                      |
+     |   状态            |   status             |  0:正常; -1:数据已失效 |
+     |   备用1      |   companyEmail_bf1           |                      |
+     |   备用2      |   companyEmail_bf2           |                      |  

@@ -3,119 +3,256 @@ package com.mbfw.util.mail;
 /**
  * 发送邮件需要使用的基本信息
  */
+
+import com.mbfw.util.Tools;
+
+import javax.mail.Authenticator;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
 import java.util.Properties;
 
 public class MailSenderInfo {
-	// 发送邮件的服务器的IP和端口
-	private String mailServerHost;
-	private String mailServerPort = "25";
-	// 邮件发送者的地址
-	private String fromAddress;
-	// 邮件接收者的地址
-	private String toAddress;
-	// 登陆邮件发送服务器的用户名和密码
-	private String userName;
-	private String password;
-	// 是否需要身份验证
-	private boolean validate = false;
-	// 邮件主题
-	private String subject;
-	// 邮件的文本内容
-	private String content;
-	// 邮件附件的文件名
-	private String[] attachFileNames;
+    // 邮箱的配置 （ 除了IP和端口配置 ）
+    private String config;
+    // 发送邮件的服务器的IP和端口
+    private String mailServerHost;
+    private String mailServerPort = "25";
+    // 邮件发送者的地址
+    private String fromAddress;
+    // 邮件接收者的地址
+    private String toAddress;
+    // 登陆邮件发送服务器的用户名和密码
+    private String userName;
+    private String password;
+    // 是否需要身份验证
+    private boolean validate = true; //  默认为 true
+    // 邮件主题
+    private String subject;
+    // 邮件的文本内容
+    private String content;
+    // 邮件附件的文件名
+    private String[] attachFileNames;
 
-	/**
-	 * 获得邮件会话属性
-	 */
-	public Properties getProperties() {
-		Properties p = new Properties();
-		p.put("mail.smtp.host", this.mailServerHost);
-		p.put("mail.smtp.port", this.mailServerPort);
-		p.put("mail.smtp.auth", validate ? "true" : "false");
-		p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-		p.put("mail.transport.protocol", "smtp");
-		p.put("mail.smtp.timeout", "10000");
-		return p;
-	}
+    /**
+     * 获得邮件会话属性
+     */
+    public Properties getProperties() {
+        Properties p = new Properties();
 
-	public String getMailServerHost() {
-		return mailServerHost;
-	}
+        if (Tools.notEmpty(this.fromAddress)) {
+            String emailType = this.config;
+            switch (emailType) {
+                case "SMTP_QQ":
+                    p = SMTP_QQ(false);
+                    break;
+                case "SMTP_ENT_QQ":
+                    p = SMTP_ENT_QQ(false);
+                    break;
+                case "SMTP_163":
+                    p = SMTP_163(false);
+                    break;
+                case "SMTP_ICLOUD":
+                    p = SMTP_icloud(false);
+                    break;
+                case "SMTP_OFFICE365":
+                    p = SMTP_office365(false);
+                    break;
+                default:
+                    p = defaultConfig(false);
+                    break;
+            }
 
-	public void setMailServerHost(String mailServerHost) {
-		this.mailServerHost = mailServerHost;
-	}
+        }
+        p.put("mail.smtp.host", this.mailServerHost);
+        p.put("mail.smtp.port", this.mailServerPort);
+        p.put("mail.smtp.auth", validate ? "true" : "false");
 
-	public String getMailServerPort() {
-		return mailServerPort;
-	}
+        return p;
+    }
 
-	public void setMailServerPort(String mailServerPort) {
-		this.mailServerPort = mailServerPort;
-	}
+    public Properties defaultConfig(Boolean debug) {
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.transport.protocol", "smtp");
+        props.put("mail.debug", null != debug ? debug.toString() : "false");
+        props.put("mail.smtp.timeout", "10000");
 
-	public boolean isValidate() {
-		return validate;
-	}
+        return props;
+    }
 
-	public void setValidate(boolean validate) {
-		this.validate = validate;
-	}
+    /**
+     * smtp entnterprise qq
+     *
+     * @param debug
+     * @return
+     */
+    public Properties SMTP_ENT_QQ(boolean debug) {
+        Properties props = defaultConfig(debug);
+        props.put("mail.smtp.host", "smtp.exmail.qq.com");
+        props.put("mail.smtp.ssl.enable", "true");
+        props.put("mail.smtp.port", "465");
+        return props;
+    }
 
-	public String[] getAttachFileNames() {
-		return attachFileNames;
-	}
+    /**
+     * smtp qq
+     *
+     * @param debug enable debug
+     * @return
+     */
+    public Properties SMTP_QQ(boolean debug) {
+        Properties props = defaultConfig(debug);
+        props.put("mail.smtp.host", "smtp.qq.com");
+        props.put("mail.smtp.ssl.enable", "true");
+        props.put("mail.smtp.port", "465");
+        return props;
+    }
 
-	public void setAttachFileNames(String[] fileNames) {
-		this.attachFileNames = fileNames;
-	}
+    /**
+     * smtp 163
+     *
+     * @param debug enable debug
+     * @return
+     */
+    public Properties SMTP_163(Boolean debug) {
+        Properties props = defaultConfig(debug);
+        props.put("mail.smtp.host", "smtp.163.com");
+        props.put("mail.smtp.ssl.enable", "true");
+        props.put("mail.smtp.port", "465");
+        return props;
+    }
 
-	public String getFromAddress() {
-		return fromAddress;
-	}
+    /**
+     * smtp icloud
+     *
+     * @param debug enable debug
+     * @return
+     */
+    public Properties SMTP_icloud(Boolean debug) {
 
-	public void setFromAddress(String fromAddress) {
-		this.fromAddress = fromAddress;
-	}
+        Properties props = defaultConfig(debug);
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.host", "smtp.mail.me.com");
+        return props;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    /**
+     * SMTP_office365 softwear
+     *
+     * @param debug enable debug
+     * @return
+     */
+    public Properties SMTP_office365(Boolean debug) {
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+        Properties props = defaultConfig(debug);
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.host", "smtp.office365.com");
+        return props;
+    }
 
-	public String getToAddress() {
-		return toAddress;
-	}
+    /**
+     * smtp outlook.com
+     *
+     * @param debug enable debug
+     * @return
+     */
+    public Properties SMTP_outlook(Boolean debug) {
 
-	public void setToAddress(String toAddress) {
-		this.toAddress = toAddress;
-	}
+        Properties props = defaultConfig(debug);
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.host", "smtp-mail.outlook.com");// smtp.office365.com
+        return props;
+    }
 
-	public String getUserName() {
-		return userName;
-	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+    public String getConfig() {
+        return config;
+    }
 
-	public String getSubject() {
-		return subject;
-	}
+    public void setConfig(String config) {
+        this.config = config;
+    }
 
-	public void setSubject(String subject) {
-		this.subject = subject;
-	}
+    public String getMailServerHost() {
+        return mailServerHost;
+    }
 
-	public String getContent() {
-		return content;
-	}
+    public void setMailServerHost(String mailServerHost) {
+        this.mailServerHost = mailServerHost;
+    }
 
-	public void setContent(String textContent) {
-		this.content = textContent;
-	}
+    public String getMailServerPort() {
+        return mailServerPort;
+    }
+
+    public void setMailServerPort(String mailServerPort) {
+        this.mailServerPort = mailServerPort;
+    }
+
+    public boolean isValidate() {
+        return validate;
+    }
+
+    public void setValidate(boolean validate) {
+        this.validate = validate;
+    }
+
+    public String[] getAttachFileNames() {
+        return attachFileNames;
+    }
+
+    public void setAttachFileNames(String[] fileNames) {
+        this.attachFileNames = fileNames;
+    }
+
+    public String getFromAddress() {
+        return fromAddress;
+    }
+
+    public void setFromAddress(String fromAddress) {
+        this.fromAddress = fromAddress;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getToAddress() {
+        return toAddress;
+    }
+
+    public void setToAddress(String toAddress) {
+        this.toAddress = toAddress;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String textContent) {
+        this.content = textContent;
+    }
 }

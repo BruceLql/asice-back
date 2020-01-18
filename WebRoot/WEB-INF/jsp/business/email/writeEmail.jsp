@@ -30,17 +30,17 @@
 		</style>
 	
 	
-	</head> 
+	</head>
 <body>
 	
 
 <!-- 编辑邮箱  -->
 <div id="dialog-add">
 	<div class="commitopacity"></div>
-  	<div class="commitbox">
+	<div class="commitbox">
 	  	<div class="commitbox_inner">
 	        <div class="commitbox_top">
-	        	<textarea name="EMAILs" id="EMAILs" placeholder="请选输入对方邮箱,多个请用(;)分号隔开" title="请选输入对方邮箱,多个请用(;)分号隔开"></textarea>
+	        	<textarea name="EMAILs" id="EMAILs" placeholder="请输入对方邮箱,多个请用(;)分号隔开" title="请输入对方邮箱,多个请用(;)分号隔开"></textarea>
 	            <div class="commitbox_cen">
 	                <div class="left" id="cityname"></div>
 	                <div class="right"><span class="save" onClick="saveEmail()">保存</span>&nbsp;&nbsp;<span class="quxiao" onClick="cancel_pl()">取消</span></div>
@@ -96,9 +96,9 @@
 					<tr>
 						<td style="text-align: center;">
 							<a class="btn btn-mini btn-primary" onclick="sendEm();">发送</a>
-							<label style="float:left;padding-left: 32px;"><input name="form-field-radio" id="form-field-radio1" onclick="setType('1');" checked="checked" type="radio" value="icon-edit"><span class="lbl">纯文本</span></label>
-							<label style="float:left;padding-left: 5px;"><input name="form-field-radio" id="form-field-radio2" onclick="setType('2');" type="radio" value="icon-edit"><span class="lbl">带标签</span></label>
-							<label style="float:left;padding-left: 15px;"><input name="form-field-checkbox" class="ace-checkbox-2" type="checkbox" id="allusers" onclick="isAll();" /><span class="lbl">全体用户</span></label>
+<%--							<label style="float:left;padding-left: 32px;"><input name="form-field-radio" id="form-field-radio1" onclick="setType('1');" checked="checked" type="radio" value="icon-edit"><span class="lbl">纯文本</span></label>--%>
+<%--							<label style="float:left;padding-left: 5px;"><input name="form-field-radio" id="form-field-radio2" onclick="setType('2');" type="radio" value="icon-edit"><span class="lbl">带标签</span></label>--%>
+<%--							<label style="float:left;padding-left: 15px;"><input name="form-field-checkbox" class="ace-checkbox-2" type="checkbox" id="allusers" onclick="isAll();" /><span class="lbl">全体用户</span></label>--%>
 						</td>
 					</tr>
 				</table>
@@ -134,7 +134,7 @@
 		<script src="static/js/ace-elements.min.js"></script>
 		<script src="static/js/ace.min.js"></script>
 		<!-- 引入 -->
-		
+
 		<!-- 编辑框-->
 		<script type="text/javascript" charset="utf-8">window.UEDITOR_HOME_URL = "<%=path%>/plugins/ueditor/";</script>
 		<script type="text/javascript" charset="utf-8" src="plugins/ueditor/ueditor.config.js"></script>

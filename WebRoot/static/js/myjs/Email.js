@@ -6,11 +6,13 @@ $(top.hangge());
 //发送
 function sendEm(){
 	
-	if($("#TYPE").val()=="1"){
+	/*if($("#TYPE").val()=="1"){
 		$("#CONTENT").val(getContentTxt());
 	}else{
-		$("#CONTENT").val(getContent());
-	}
+
+	}*/
+	$("#CONTENT").val(getContent()); //直接改为带标签类型邮件内容
+
 	if($("#EMAIL").val()==""){
 		$("#EMAIL").tips({
 			side:3,
@@ -46,17 +48,17 @@ function sendEm(){
 	$("#zhongxin2").show();
 	
 	var EMAIL = $("#EMAIL").val();
-	var TYPE  = $("#TYPE").val();
+	// var TYPE  = $("#TYPE").val();
 	var TITLE = $("#TITLE").val();
 	var CONTENT = $("#CONTENT").val();
-	var isAll = $("#isAll").val();
+	// var isAll = $("#isAll").val();
 	
 	var fmsg = "${pd.msg}";
 	
 	$.ajax({
 		type: "POST",
 		url: locat+'/historyemailrecord/sendEmail.do?tm='+new Date().getTime(),
-    	data: {EMAIL:EMAIL,TYPE:TYPE,TITLE:TITLE,CONTENT:CONTENT,isAll:isAll,fmsg:fmsg},
+    	data: {EMAIL:EMAIL,TITLE:TITLE,CONTENT:CONTENT},
 		dataType:'json',
 		//beforeSend: validateData,
 		cache: false,

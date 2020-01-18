@@ -49,7 +49,7 @@
 		  	<div class="commitbox">
 			  	<div class="commitbox_inner">
 			        <div class="commitbox_top">
-			        	<textarea name="PHONEs" id="PHONEs" placeholder="请选输入对方手机号,多个请用(;)分号隔开" title="请选输入对方手机号,多个请用(;)分号隔开"></textarea>
+			        	<textarea name="PHONEs" id="PHONEs" placeholder="请输入对方手机号,多个请用(;)分号隔开" title="请输入对方手机号,多个请用(;)分号隔开"></textarea>
 			            <div class="commitbox_cen">
 			                <div class="left" id="cityname"></div>
 			                <div class="right"><span class="save" onClick="savePHONE()">保存</span>&nbsp;&nbsp;<span class="quxiao" onClick="cancel_pl()">取消</span></div>
